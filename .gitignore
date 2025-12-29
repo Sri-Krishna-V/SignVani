@@ -41,3 +41,20 @@ assets/test_audio/
 # OS specific
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# IDEs
+.idea/
+
+
+
+
