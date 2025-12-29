@@ -85,6 +85,35 @@ class TranscriptEvent:
                 f"confidence={self.confidence:.2f})")
 
 
+class ProcessedText:
+    """
+    Represents text processed by NLP engine (tokenized, tagged).
+
+    Uses __slots__ for memory efficiency.
+    """
+    __slots__ = ('tokens', 'tagged_tokens', 'original_text', 'timestamp')
+
+    def __init__(self, tokens: List[str], tagged_tokens: List[tuple],
+                 original_text: str, timestamp: float = None):
+        """
+        Initialize processed text.
+
+        Args:
+            tokens: List of string tokens
+            tagged_tokens: List of (token, tag) tuples
+            original_text: Original input text
+            timestamp: Unix timestamp
+        """
+        self.tokens = tokens
+        self.tagged_tokens = tagged_tokens
+        self.original_text = original_text
+        self.timestamp = timestamp if timestamp is not None else time.time()
+
+    def __repr__(self):
+        return (f"ProcessedText(tokens={len(self.tokens)}, "
+                f"original='{self.original_text}')")
+
+
 class GlossPhrase:
     """
     Represents a phrase converted to ISL glosses.
