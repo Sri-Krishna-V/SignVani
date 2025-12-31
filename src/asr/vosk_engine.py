@@ -74,6 +74,7 @@ class VoskEngine:
     def process_audio(self, audio_data: bytes) -> Optional[Dict[str, Any]]:
         """
         Process a chunk of audio data.
+        Uses timeout on lock to prevent deadlocks on RPi.
 
         Args:
             audio_data: Raw audio bytes (int16 PCM)
@@ -82,7 +83,12 @@ class VoskEngine:
             Dictionary with result if a complete utterance is recognized,
             None if partial result or silence.
         """
-        with self._lock:
+        # Use timeout to prevent deadlock on RPi
+        if not self._lock.acquire(timeout=2.0):
+            logger.warning("Vosk engine lock acquisition timeout")
+            return None
+
+        try:
             if self._recognizer.AcceptWaveform(audio_data):
                 try:
                     result = json.loads(self._recognizer.Result())
@@ -93,16 +99,29 @@ class VoskEngine:
             else:
                 # Partial result available via self._recognizer.PartialResult()
                 return None
+        finally:
+            self._lock.release()
 
     def get_final_result(self) -> Dict[str, Any]:
         """Get the final result from the recognizer (flush buffer)."""
-        with self._lock:
-            try:
-                return json.loads(self._recognizer.FinalResult())
-            except json.JSONDecodeError:
-                return {}
+        if not self._lock.acquire(timeout=1.0):
+            logger.warning("Vosk get_final_result lock timeout")
+            return {}
+
+        try:
+            return json.loads(self._recognizer.FinalResult())
+        except json.JSONDecodeError:
+            return {}
+        finally:
+            self._lock.release()
 
     def reset(self):
         """Reset the recognizer."""
-        with self._lock:
+        if not self._lock.acquire(timeout=1.0):
+            logger.warning("Vosk reset lock timeout")
+            return
+
+        try:
             self._recognizer.Reset()
+        finally:
+            self._lock.release()

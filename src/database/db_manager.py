@@ -13,7 +13,7 @@ from contextlib import contextmanager
 from pathlib import Path
 from typing import Generator
 
-from config.settings import DatabaseConfig
+from config.settings import database_config
 from src.utils.exceptions import ConnectionError, SchemaError, DatabaseError
 
 logger = logging.getLogger(__name__)
@@ -39,8 +39,8 @@ class DatabaseManager:
         if self._initialized:
             return
 
-        self.db_path = DatabaseConfig.DB_PATH
-        self.pool_size = DatabaseConfig.CONNECTION_POOL_SIZE
+        self.db_path = database_config.DB_PATH
+        self.pool_size = database_config.CONNECTION_POOL_SIZE
         self.pool = queue.Queue(maxsize=self.pool_size)
         self._initialized = True
 
@@ -67,11 +67,11 @@ class DatabaseManager:
 
             # Apply PRAGMA settings for performance/reliability
             conn.execute(
-                f"PRAGMA journal_mode={DatabaseConfig.PRAGMA_JOURNAL_MODE}")
+                f"PRAGMA journal_mode={database_config.PRAGMA_JOURNAL_MODE}")
             conn.execute(
-                f"PRAGMA synchronous={DatabaseConfig.PRAGMA_SYNCHRONOUS}")
+                f"PRAGMA synchronous={database_config.PRAGMA_SYNCHRONOUS}")
             conn.execute(
-                f"PRAGMA cache_size={DatabaseConfig.PRAGMA_CACHE_SIZE}")
+                f"PRAGMA cache_size={database_config.PRAGMA_CACHE_SIZE}")
 
             # Enable foreign keys
             conn.execute("PRAGMA foreign_keys=ON")

@@ -10,7 +10,7 @@ import sqlite3
 from functools import lru_cache
 from typing import Optional
 
-from config.settings import DatabaseConfig
+from config.settings import database_config
 from src.database.db_manager import DatabaseManager
 from src.utils.exceptions import QueryError
 
@@ -26,7 +26,7 @@ class GlossRetriever:
     def __init__(self):
         self.db_manager = DatabaseManager()
 
-    @lru_cache(maxsize=DatabaseConfig.CACHE_SIZE)
+    @lru_cache(maxsize=database_config.CACHE_SIZE)
     def get_hamnosys(self, gloss: str) -> Optional[str]:
         """
         Retrieve HamNoSys string for a given gloss.
@@ -58,7 +58,7 @@ class GlossRetriever:
                     return row['hamnosys_string']
 
                 # 2. Fuzzy match (if enabled)
-                if DatabaseConfig.ENABLE_FTS:
+                if database_config.ENABLE_FTS:
                     # Simple FTS query - looks for similar words
                     # Note: FTS syntax can be complex, here we use simple prefix/token matching
                     # For true fuzzy (levenshtein), we might need a custom function or spellfix1

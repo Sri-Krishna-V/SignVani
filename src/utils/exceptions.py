@@ -51,26 +51,6 @@ class VADError(AudioError):
 
 
 # ============================================================================
-# ASR Subsystem Exceptions
-# ============================================================================
-
-
-class ASRError(SignVaniError):
-    """Base exception for ASR-related errors"""
-    pass
-
-
-class ModelLoadError(ASRError):
-    """Raised when ASR model fails to load"""
-    pass
-
-
-class TranscriptionError(ASRError):
-    """Raised when transcription fails"""
-    pass
-
-
-# ============================================================================
 # ASR (Automatic Speech Recognition) Exceptions
 # ============================================================================
 

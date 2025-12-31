@@ -34,6 +34,9 @@ class TextProcessor:
 
     def _ensure_nltk_resources(self):
         """Ensure required NLTK data is available."""
+        # Add custom path for NLTK data
+        nltk.data.path.insert(0, NLPConfig.NLTK_DATA_PATH)
+
         try:
             # Check if resources exist, if not they should have been downloaded by setup_models.py
             # But we verify here to be safe
@@ -44,9 +47,14 @@ class TextProcessor:
                     try:
                         nltk.data.find(f'corpora/{resource}')
                     except LookupError:
-                        logger.warning(
-                            f"NLTK resource '{resource}' not found. Attempting download...")
-                        nltk.download(resource, quiet=True)
+                        try:
+                            # Try punkt_tab for newer NLTK versions
+                            nltk.data.find(f'tokenizers/{resource}_tab')
+                        except LookupError:
+                            logger.warning(
+                                f"NLTK resource '{resource}' not found. Attempting download...")
+                            nltk.download(resource, quiet=True,
+                                          download_dir=NLPConfig.NLTK_DATA_PATH)
         except Exception as e:
             logger.error(f"Failed to verify NLTK resources: {e}")
 

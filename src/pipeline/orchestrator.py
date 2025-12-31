@@ -5,6 +5,7 @@ Coordinates the entire Speech-to-Sign pipeline:
 Audio -> ASR -> NLP -> SiGML -> Output
 
 Manages threads, queues, and graceful shutdown.
+Optimized for Raspberry Pi 4 with proper signal handling.
 """
 
 import logging
@@ -28,11 +29,13 @@ logger = logging.getLogger(__name__)
 class PipelineOrchestrator:
     """
     Main coordinator for the SignVani pipeline.
+    Optimized for Raspberry Pi 4 with graceful shutdown support.
     """
 
     def __init__(self):
         """Initialize pipeline components and queues."""
         self._is_running = False
+        self._shutdown_event = threading.Event()
 
         # 1. Create Queues
         self.audio_queue = queue.Queue(
@@ -43,9 +46,9 @@ class PipelineOrchestrator:
         # 2. Initialize Components
         logger.info("Initializing Audio Capture...")
         self.audio_capture = AudioCapture(
-            sample_rate=audio_config.SAMPLE_RATE,
-            chunk_size=audio_config.FRAMES_PER_BUFFER,
-            output_queue=self.audio_queue
+            output_queue=self.audio_queue,
+            vad_enabled=audio_config.VAD_ENABLED,
+            noise_filter_enabled=audio_config.NOISE_REDUCTION_ENABLED
         )
 
         logger.info("Initializing ASR Worker...")
@@ -60,10 +63,29 @@ class PipelineOrchestrator:
         logger.info("Initializing SiGML Generator...")
         self.sigml_generator = SiGMLGenerator()
 
+        # Setup signal handlers for graceful shutdown (important for RPi)
+        self._setup_signal_handlers()
+
+    def _setup_signal_handlers(self):
+        """Setup signal handlers for graceful shutdown on RPi."""
+        def signal_handler(signum, frame):
+            logger.info(f"Received signal {signum}, initiating shutdown...")
+            self._shutdown_event.set()
+            self.stop()
+
+        # Register handlers for common termination signals
+        signal.signal(signal.SIGINT, signal_handler)
+        signal.signal(signal.SIGTERM, signal_handler)
+
+        # SIGHUP is available on Unix (RPi) but not on Windows
+        if hasattr(signal, 'SIGHUP'):
+            signal.signal(signal.SIGHUP, signal_handler)
+
     def start(self):
         """Start the pipeline."""
         logger.info("Starting SignVani Pipeline...")
         self._is_running = True
+        self._shutdown_event.clear()
 
         # Start ASR Worker Thread
         self.asr_worker.start()
@@ -77,14 +99,14 @@ class PipelineOrchestrator:
     def _process_loop(self):
         """
         Main loop consuming transcripts and generating SiGML.
-        Runs in the main thread.
+        Runs in the main thread. Optimized for RPi with proper shutdown handling.
         """
         logger.info("Pipeline ready. Listening...")
 
         try:
-            while self._is_running:
+            while self._is_running and not self._shutdown_event.is_set():
                 try:
-                    # 1. Get Transcript
+                    # 1. Get Transcript (with timeout to check shutdown event)
                     event: TranscriptEvent = self.transcript_queue.get(
                         timeout=0.5)
 
@@ -94,16 +116,18 @@ class PipelineOrchestrator:
                     self.transcript_queue.task_done()
 
                 except queue.Empty:
+                    # Check if shutdown was requested
+                    if self._shutdown_event.is_set():
+                        break
                     continue
                 except KeyboardInterrupt:
                     logger.info("KeyboardInterrupt received.")
-                    self.stop()
+                    break
                 except Exception as e:
                     logger.error(f"Error in pipeline loop: {e}")
 
         except KeyboardInterrupt:
             logger.info("KeyboardInterrupt received.")
-            self.stop()
         finally:
             self.stop()
 
@@ -137,24 +161,50 @@ class PipelineOrchestrator:
         print("="*40 + "\n")
 
     def stop(self):
-        """Graceful shutdown."""
+        """Graceful shutdown with proper resource cleanup for RPi."""
         if not self._is_running:
             return
 
         logger.info("Stopping pipeline...")
         self._is_running = False
+        self._shutdown_event.set()
 
-        # Stop Audio
+        # Stop Audio capture first (stops feeding queue)
         if self.audio_capture:
-            self.audio_capture.stop()
+            try:
+                self.audio_capture.stop()
+            except Exception as e:
+                logger.warning(f"Error stopping audio capture: {e}")
 
-        # Stop ASR
+        # Stop ASR worker with timeout
         if self.asr_worker:
-            self.asr_worker.stop()
-            self.asr_worker.join(timeout=2.0)
+            try:
+                self.asr_worker.stop()
+                self.asr_worker.join(
+                    timeout=pipeline_config.GRACEFUL_SHUTDOWN_TIMEOUT)
+                if self.asr_worker.is_alive():
+                    logger.warning("ASR worker did not stop gracefully")
+            except Exception as e:
+                logger.warning(f"Error stopping ASR worker: {e}")
+
+        # Drain remaining queues to prevent memory buildup
+        self._drain_queues()
 
         logger.info("Pipeline stopped.")
-        sys.exit(0)
+
+    def _drain_queues(self):
+        """Drain queues to free memory - important for RPi with limited RAM."""
+        try:
+            while not self.audio_queue.empty():
+                self.audio_queue.get_nowait()
+        except:
+            pass
+
+        try:
+            while not self.transcript_queue.empty():
+                self.transcript_queue.get_nowait()
+        except:
+            pass
 
 
 if __name__ == "__main__":
