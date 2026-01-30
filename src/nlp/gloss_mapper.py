@@ -23,11 +23,21 @@ class GlossMapper:
     Converts English text to ISL GlossPhrases with HamNoSys validation.
     """
 
-    def __init__(self):
-        """Initialize NLP components."""
+    def __init__(self, prewarm: bool = True):
+        """
+        Initialize NLP components.
+
+        Args:
+            prewarm: If True, pre-warm WordNet to avoid cold-start latency.
+        """
         self.text_processor = TextProcessor()
         self.grammar_transformer = GrammarTransformer()
         self.retriever = GlossRetriever()
+
+        # Pre-warm WordNet to avoid ~9s cold-start on first lemmatization
+        if prewarm and self.text_processor.lemmatizer:
+            logger.debug("Pre-warming WordNet lemmatizer...")
+            _ = self.text_processor.lemmatizer.lemmatize("warmup")
 
     def process(self, text: str) -> GlossPhrase:
         """

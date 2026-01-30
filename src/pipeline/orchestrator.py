@@ -21,6 +21,7 @@ from src.audio.audio_capture import AudioCaptureSystem as AudioCapture
 from src.asr.asr_worker import ASRWorker
 from src.nlp.gloss_mapper import GlossMapper
 from src.sigml.generator import SiGMLGenerator
+from src.sigml.avatar_player import CWASAPlayer, CWASAPlayerError
 from src.nlp.dataclasses import TranscriptEvent, GlossPhrase, SiGMLOutput
 
 logger = logging.getLogger(__name__)
@@ -32,10 +33,17 @@ class PipelineOrchestrator:
     Optimized for Raspberry Pi 4 with graceful shutdown support.
     """
 
-    def __init__(self):
-        """Initialize pipeline components and queues."""
+    def __init__(self, avatar_enabled: bool = True, avatar_auto_launch: bool = False):
+        """
+        Initialize pipeline components and queues.
+
+        Args:
+            avatar_enabled: Enable CWASA avatar rendering
+            avatar_auto_launch: Auto-launch avatar player if not running
+        """
         self._is_running = False
         self._shutdown_event = threading.Event()
+        self._avatar_enabled = avatar_enabled
 
         # 1. Create Queues
         self.audio_queue = queue.Queue(
@@ -62,6 +70,16 @@ class PipelineOrchestrator:
 
         logger.info("Initializing SiGML Generator...")
         self.sigml_generator = SiGMLGenerator()
+
+        # 3. Initialize Avatar Player (optional)
+        self.avatar_player: Optional[CWASAPlayer] = None
+        if self._avatar_enabled:
+            logger.info("Initializing CWASA Avatar Player...")
+            self.avatar_player = CWASAPlayer(auto_launch=avatar_auto_launch)
+            if self.avatar_player.is_player_running():
+                logger.info("CWASA Avatar Player connected")
+            else:
+                logger.info("CWASA Avatar Player not running (will send when available)")
 
         # Setup signal handlers for graceful shutdown (important for RPi)
         self._setup_signal_handlers()
@@ -153,12 +171,31 @@ class PipelineOrchestrator:
             logger.error(f"Failed to process transcript '{text}': {e}")
 
     def _emit_output(self, output: SiGMLOutput):
-        """Emit final output."""
-        print("\n" + "="*40)
+        """
+        Emit final output to console and avatar player.
+
+        Args:
+            output: SiGMLOutput containing XML and metadata
+        """
+        # Console output
+        print("\n" + "="*60)
         print(f"INPUT:  {output.original_text}")
         print(f"GLOSS:  {' '.join(output.glosses)}")
         print(f"SiGML:  {len(output.sigml_xml)} bytes generated")
-        print("="*40 + "\n")
+
+        # Send to avatar player if enabled
+        if self._avatar_enabled and self.avatar_player:
+            try:
+                if self.avatar_player.is_player_running():
+                    self.avatar_player.send_sigml(output.sigml_xml)
+                    print(f"AVATAR: ✓ Sent to CWASA player")
+                else:
+                    print(f"AVATAR: ⚠ Player not running (launch with scripts/setup_avatar.py)")
+            except CWASAPlayerError as e:
+                logger.warning(f"Avatar player error: {e}")
+                print(f"AVATAR: ✗ Error: {e}")
+
+        print("="*60 + "\n")
 
     def stop(self):
         """Graceful shutdown with proper resource cleanup for RPi."""

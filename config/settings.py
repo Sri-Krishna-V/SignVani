@@ -60,9 +60,9 @@ class NLPConfig:
     # NLTK data path
     NLTK_DATA_PATH: str = str(PROJECT_ROOT / 'models' / 'nltk_data')
 
-    # Required NLTK resources
+    # Required NLTK resources (updated for NLTK 3.9+)
     NLTK_RESOURCES: tuple = (
-        'punkt', 'wordnet', 'stopwords', 'averaged_perceptron_tagger')
+        'punkt_tab', 'wordnet', 'stopwords', 'averaged_perceptron_tagger_eng')
 
     # Processing options
     LEMMATIZATION_ENABLED: bool = True
