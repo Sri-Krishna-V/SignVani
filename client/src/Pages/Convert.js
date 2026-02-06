@@ -18,6 +18,9 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
+import { disposeThreeResources } from '../Utils/threeCleanup';
+import { validateBoneAction } from '../Utils/threeHelpers';
+
 function Convert() {
   const [text, setText] = useState("");
   const [bot, setBot] = useState(ybot);
@@ -50,7 +53,13 @@ function Convert() {
     const spotLight = new THREE.SpotLight(0xffffff, 2);
     spotLight.position.set(0, 5, 5);
     ref.scene.add(spotLight);
-    ref.renderer = new THREE.WebGLRenderer({ antialias: true });
+    
+    // Optimized renderer settings for Raspberry Pi performance
+    ref.renderer = new THREE.WebGLRenderer({ 
+      antialias: false,  // Disabled for better performance on Pi
+      powerPreference: 'low-power',  // Critical for Raspberry Pi
+      precision: 'mediump'  // Use medium precision for better performance
+    });
 
     ref.camera = new THREE.PerspectiveCamera(
         30,
@@ -58,6 +67,7 @@ function Convert() {
         0.1,
         1000
     )
+    ref.renderer.setPixelRatio(1);  // Force 1:1 pixel ratio for Pi performance
     ref.renderer.setSize(window.innerWidth * 0.57, window.innerHeight - 70);
 
     document.getElementById("canvas").innerHTML = "";
@@ -73,17 +83,27 @@ function Convert() {
         gltf.scene.traverse((child) => {
           if ( child.type === 'SkinnedMesh' ) {
             child.frustumCulled = false;
+            // Disable shadows for better Raspberry Pi performance
+            child.castShadow = false;
+            child.receiveShadow = false;
           }
-    });
+        });
         ref.avatar = gltf.scene;
         ref.scene.add(ref.avatar);
         defaultPose(ref);
       },
       (xhr) => {
-        console.log(xhr);
+        console.log(`Model loading: ${Math.round((xhr.loaded / xhr.total) * 100)}%`);
+      },
+      (error) => {
+        console.error('Error loading model:', error);
       }
     );
 
+    // Cleanup function to prevent memory leaks
+    return () => {
+      disposeThreeResources(ref);
+    };
   }, [ref, bot]);
 
   ref.animate = () => {
@@ -91,7 +111,10 @@ function Convert() {
         ref.pending = false;
       return ;
     }
-    requestAnimationFrame(ref.animate);
+    
+    // Store animation frame ID for proper cleanup
+    ref.animationFrameId = requestAnimationFrame(ref.animate);
+    
     if(ref.animations[0].length){
         if(!ref.flag) {
           if(ref.animations[0][0]==='add-text'){
@@ -101,14 +124,28 @@ function Convert() {
           else{
             for(let i=0;i<ref.animations[0].length;){
               let [boneName, action, axis, limit, sign] = ref.animations[0][i]
-              if(sign === "+" && ref.avatar.getObjectByName(boneName)[action][axis] < limit){
-                  ref.avatar.getObjectByName(boneName)[action][axis] += speed;
-                  ref.avatar.getObjectByName(boneName)[action][axis] = Math.min(ref.avatar.getObjectByName(boneName)[action][axis], limit);
+              
+              // Null safety check: ensure avatar and bone exist
+              if (!ref.avatar) {
+                ref.animations[0].splice(i, 1);
+                continue;
+              }
+              
+              const bone = ref.avatar.getObjectByName(boneName);
+              if (!bone || !validateBoneAction(bone, action, axis)) {
+                // Remove invalid animation and continue
+                ref.animations[0].splice(i, 1);
+                continue;
+              }
+              
+              if(sign === "+" && bone[action][axis] < limit){
+                  bone[action][axis] += speed;
+                  bone[action][axis] = Math.min(bone[action][axis], limit);
                   i++;
               }
-              else if(sign === "-" && ref.avatar.getObjectByName(boneName)[action][axis] > limit){
-                  ref.avatar.getObjectByName(boneName)[action][axis] -= speed;
-                  ref.avatar.getObjectByName(boneName)[action][axis] = Math.max(ref.avatar.getObjectByName(boneName)[action][axis], limit);
+              else if(sign === "-" && bone[action][axis] > limit){
+                  bone[action][axis] -= speed;
+                  bone[action][axis] = Math.max(bone[action][axis], limit);
                   i++;
               }
               else{
@@ -125,7 +162,11 @@ function Convert() {
       }, pause);
       ref.animations.shift();
     }
-    ref.renderer.render(ref.scene, ref.camera);
+    
+    // Null safety check before rendering
+    if (ref.renderer && ref.scene && ref.camera) {
+      ref.renderer.render(ref.scene, ref.camera);
+    }
   }
 
   const sign = (inputRef) => {
