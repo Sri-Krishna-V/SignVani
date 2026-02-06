@@ -1,43 +1,84 @@
 # SignVani Copilot Instructions
 
-SignVani is an offline, low-latency Speech-to-Indian Sign Language translator for Raspberry Pi 4.
-Focus on memory efficiency, low latency, and thread safety.
+SignVani is an offline Speech-to-Indian Sign Language translator optimized for Raspberry Pi 4.
+Target: <1s latency, <500MB RAM. All processing is local—no cloud APIs.
 
-## Architecture & Patterns
+## Architecture
 
-- **Offline-First**: No cloud APIs. All processing is local.
-- **Pipeline**: Audio Capture -> VAD -> Noise Filter -> Buffer -> ASR Worker -> NLP -> Database -> SiGML.
-- **Memory Optimization**:
-  - Use `__slots__` for data classes (e.g., `src/nlp/dataclasses.py`).
-  - Use `np.float32` for audio data to save memory.
-  - Avoid heavy libraries where lightweight alternatives exist.
-- **Thread Safety**:
-  - Use `queue.Queue` for inter-thread communication.
-  - Implement Singleton pattern for heavy resources like `VoskEngine` (`src/asr/vosk_engine.py`).
-  - Ensure thread-safe access to shared buffers (`CircularAudioBuffer`).
-- **Configuration**:
-  - Use `config/settings.py` with frozen dataclasses (`@dataclass(frozen=True)`).
-  - Do not hardcode values; reference `audio_config`, `vosk_config`, etc.
+**Pipeline flow** (see [orchestrator.py](src/pipeline/orchestrator.py)):
+```
+Mic → AudioCapture → VAD → NoiseFilter → CircularBuffer → queue.Queue
+  → ASRWorker (Vosk) → TranscriptQueue → NLP (SVO→SOV) → Database → SiGML → Avatar
+```
 
-## Development Workflow
+**Key patterns**:
+- **Singleton** for heavy resources: `VoskEngine`, `DatabaseManager` use `_instance`/`_lock` pattern
+- **Thread-safe queues**: Components communicate via `queue.Queue` with configurable sizes
+- **Frozen dataclasses**: All config in [config/settings.py](config/settings.py) uses `@dataclass(frozen=True)`
 
-- **Setup**: Run `python scripts/setup_models.py` to download Vosk and NLTK models.
-- **Running**: Execute `python main.py` to start the application.
-- **Testing**:
-  - Unit Tests: `python -m tests.unit.test_audio`, `python -m tests.unit.test_asr`
-  - Integration: `python -m tests.integration.test_pipeline_phase1_2`
-  - Always run tests from the project root.
+## Memory Optimization (Critical for RPi4)
 
-## Key Files
+```python
+# ALWAYS use __slots__ for data classes (saves ~50% memory)
+class AudioChunk:
+    __slots__ = ('data', 'timestamp', 'sample_rate')
+    
+# ALWAYS use np.float32 for audio data
+self.data = data.astype(np.float32) if data.dtype != np.float32 else data
+```
 
-- `src/nlp/dataclasses.py`: Core data structures (`AudioChunk`, `TranscriptEvent`).
-- `config/settings.py`: Central configuration.
-- `src/asr/vosk_engine.py`: ASR implementation.
-- `src/audio/audio_capture.py`: Audio capture logic.
+Reference: [src/nlp/dataclasses.py](src/nlp/dataclasses.py) for all core data structures.
 
-## Coding Standards
+## Configuration
 
-- **Type Hints**: Use `typing` module for all function signatures.
-- **Docstrings**: Follow Google style docstrings.
-- **Imports**: Group imports: standard library, third-party, local application.
-- **Error Handling**: Use custom exceptions from `src/utils/exceptions.py`.
+Never hardcode values. Import from `config/settings.py`:
+```python
+from config.settings import audio_config, vosk_config, pipeline_config
+# Use: audio_config.SAMPLE_RATE, pipeline_config.AUDIO_QUEUE_SIZE
+```
+
+## Exception Handling
+
+Use domain-specific exceptions from [src/utils/exceptions.py](src/utils/exceptions.py):
+```python
+from src.utils.exceptions import ModelLoadError, ASRError, DatabaseError
+# Hierarchy: SignVaniError → AudioError → AudioCaptureError
+```
+
+## Commands
+
+```bash
+# Setup (downloads Vosk model + NLTK data)
+python scripts/setup_models.py
+
+# Run live audio mode
+python main.py
+
+# Run text mode (skip audio/ASR)
+python main.py --text "Hello I am Krishna" --no-avatar
+
+# Tests (always from project root)
+python -m tests.unit.test_nlp
+python -m tests.integration.test_pipeline_phase1_2
+```
+
+## Testing Conventions
+
+- Use `unittest` with `unittest.mock` for isolation
+- Mock heavy resources: `@patch('src.asr.asr_worker.VoskEngine')`
+- Integration tests verify queue-based data flow between components
+- See [tests/integration/test_pipeline_phase1_2.py](tests/integration/test_pipeline_phase1_2.py) for pattern
+
+## Database
+
+- SQLite with connection pooling (`DatabaseManager` singleton)
+- Schema: [src/database/schema.sql](src/database/schema.sql)
+- Seed data: `seed_database()` from [src/database/seed_db.py](src/database/seed_db.py)
+- HamNoSys mappings in [src/database/hamnosys_data.py](src/database/hamnosys_data.py)
+
+## Code Style
+
+- **Type hints**: Required for all function signatures
+- **Docstrings**: Google style
+- **Imports**: Group as stdlib → third-party → local (`from src.x import y`)
+- **Lock timeouts**: Always use `acquire(timeout=N)` to prevent RPi deadlocks
