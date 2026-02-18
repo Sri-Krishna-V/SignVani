@@ -5,11 +5,13 @@ import { loadAllWords, getAvailableWordsFromJSON } from './Utils/wordLoader';
 // Load all words from JSON
 const loadedWords = loadAllWords();
 
-// Named exports for backward compatibility (all 33 words from wordsData.json)
+// Named exports for backward compatibility (all 48 words from wordsData.json)
 export const { TIME, HOME, PERSON, YOU, HELLO, THANK, PLEASE, SORRY, YES, NO,
   HELP, NAME, FAMILY, FRIEND, WORK, SCHOOL, EAT, DRINK, GOOD, BAD,
   ME, WATER, MOTHER, FATHER, BROTHER, SISTER, TEACHER, FOOD, HAPPY, SAD,
-  WHERE, UNDERSTAND, PLEASE_NAMASTE } = loadedWords;
+  WHERE, UNDERSTAND, PLEASE_NAMASTE,
+  I, LOVE, COME, GO, WANT, KNOW, TODAY, TOMORROW, YESTERDAY,
+  MORNING, NIGHT, STOP, SLEEP, TIRED, SICK } = loadedWords;
 
 // Dynamic lookup: returns the animation function for any word in wordsData.json,
 // including words added in the future without needing to update this file.
