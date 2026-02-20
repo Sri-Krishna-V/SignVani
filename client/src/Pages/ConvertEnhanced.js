@@ -20,8 +20,8 @@ function Convert() {
   const [text, setText] = useState("");
   const [transcript, setTranscript] = useState("");
   const [bot, setBot] = useState(ybot);
-  const [speed, setSpeed] = useState(0.1);
-  const [pause, setPause] = useState(800);
+  const [speed, setSpeed] = useState(1.0);
+  const [pause, setPause] = useState(400);
   
   // Backend integration states
   const [isBackendMode, setIsBackendMode] = useState(true);
@@ -312,7 +312,7 @@ function Convert() {
           <Slider
             axis="x"
             xmin={0.05}
-            xmax={0.50}
+            xmax={1.0}
             xstep={0.01}
             x={speed}
             onChange={({ x }) => setSpeed(x)}

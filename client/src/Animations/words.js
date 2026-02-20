@@ -15,7 +15,10 @@ export const { TIME, HOME, PERSON, YOU, HELLO, THANK, PLEASE, SORRY, YES, NO,
 
 // Dynamic lookup: returns the animation function for any word in wordsData.json,
 // including words added in the future without needing to update this file.
-export const getWordAnimation = (word) => loadedWords[word.toUpperCase()] || null;
+export const getWordAnimation = (word) => {
+  const clean = word.toUpperCase().replace(/[^A-Z]/g, '');
+  return loadedWords[clean] || null;
+};
 
 // Full list of available words (automatically generated from JSON)
 export const wordList = getAvailableWordsFromJSON();

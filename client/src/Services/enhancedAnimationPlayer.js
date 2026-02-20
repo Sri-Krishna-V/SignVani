@@ -126,16 +126,20 @@ class EnhancedAnimationPlayer {
     for (const word of wordArray) {
       if (word.length === 0) continue;
 
+      // Strip punctuation so "HELLO." matches "HELLO" in wordsData.json
+      const cleanWord = word.replace(/[^A-Z]/g, '');
+      if (cleanWord.length === 0) continue;
+
       // Try word animation first (named export or dynamic lookup)
-      const wordAnim = words[word] || getWordAnimation(word);
+      const wordAnim = words[cleanWord] || getWordAnimation(cleanWord);
       if (wordAnim) {
-        this.ref.animations.push(['add-text', word + ' ']);
+        this.ref.animations.push(['add-text', cleanWord + ' ']);
         wordAnim(this.ref);
         animationsQueued = true;
       } else {
         // Fall back to letter-by-letter fingerspelling
-        for (const [index, ch] of word.split('').entries()) {
-          if (index === word.length - 1) {
+        for (const [index, ch] of cleanWord.split('').entries()) {
+          if (index === cleanWord.length - 1) {
             this.ref.animations.push(['add-text', ch + ' ']);
           } else {
             this.ref.animations.push(['add-text', ch]);
@@ -244,15 +248,16 @@ export const playAnimation = (ref, character) => {
 
 export const playWord = (ref, word) => {
   const upperWord = word.toUpperCase();
+  const cleanWord = upperWord.replace(/[^A-Z]/g, '');
   
   if (!ref || !ref.animations) {
     console.error('Invalid ref object provided to playWord');
     return false;
   }
   
-  const wordAnim = words[upperWord] || getWordAnimation(upperWord);
+  const wordAnim = words[cleanWord] || getWordAnimation(cleanWord);
   if (!wordAnim) {
-    console.warn(`No animation found for word: ${upperWord}`);
+    console.warn(`No animation found for word: ${cleanWord}`);
     return false;
   }
   

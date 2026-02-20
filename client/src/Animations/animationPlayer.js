@@ -53,6 +53,7 @@ export const playAnimation = (ref, character) => {
  */
 export const playWord = (ref, word) => {
   const upperWord = word.toUpperCase();
+  const cleanWord = upperWord.replace(/[^A-Z]/g, '');
   
   // Validate input
   if (!ref || !ref.animations) {
@@ -61,9 +62,9 @@ export const playWord = (ref, word) => {
   }
   
   // Check if word animation exists (named export or dynamic lookup)
-  const wordAnim = words[upperWord] || getWordAnimation(upperWord);
+  const wordAnim = words[cleanWord] || getWordAnimation(cleanWord);
   if (!wordAnim) {
-    console.warn(`No animation found for word: ${upperWord}`);
+    console.warn(`No animation found for word: ${cleanWord}`);
     return false;
   }
   
@@ -120,22 +121,26 @@ export const playString = (ref, inputString, addTextMarkers = true) => {
   for (const word of wordArray) {
     // Skip empty strings from multiple spaces
     if (word.length === 0) continue;
+
+    // Strip punctuation so "HELLO." matches "HELLO" in wordsData.json
+    const cleanWord = word.replace(/[^A-Z]/g, '');
+    if (cleanWord.length === 0) continue;
     
     // Try to play as a complete word animation first (named export or dynamic lookup)
-    const wordAnim = words[word] || getWordAnimation(word);
+    const wordAnim = words[cleanWord] || getWordAnimation(cleanWord);
     if (wordAnim) {
       if (addTextMarkers) {
-        ref.animations.push(['add-text', word + ' ']);
+        ref.animations.push(['add-text', cleanWord + ' ']);
       }
       wordAnim(ref);
       animationsQueued = true;
     } 
     // Fall back to letter-by-letter fingerspelling
     else {
-      for (const [index, ch] of word.split('').entries()) {
+      for (const [index, ch] of cleanWord.split('').entries()) {
         // Add text marker for each letter
         if (addTextMarkers) {
-          if (index === word.length - 1) {
+          if (index === cleanWord.length - 1) {
             ref.animations.push(['add-text', ch + ' ']);
           } else {
             ref.animations.push(['add-text', ch]);

@@ -24,8 +24,8 @@ import { useAnimationEngine } from '../Hooks/useAnimationEngine';
 function Video() {
   const [text, setText] = useState("");
   const [bot, setBot] = useState(ybot);
-  const [speed, setSpeed] = useState(0.1);
-  const [pause, setPause] = useState(800);
+  const [speed, setSpeed] = useState(1.0);
+  const [pause, setPause] = useState(400);
   const [invalidId, setInvalidId] = useState(false)
   const [title, setTitle] = useState('')
   const [desc, setDesc] = useState('')
@@ -111,7 +111,7 @@ function Video() {
           <Slider
             axis="x"
             xmin={0.05}
-            xmax={0.50}
+            xmax={1.0}
             xstep={0.01}
             x={speed}
             onChange={({ x }) => setSpeed(x)}

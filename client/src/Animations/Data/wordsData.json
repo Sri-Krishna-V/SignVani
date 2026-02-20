@@ -173,6 +173,215 @@
       }
     ]
   },
+  "BYE": {
+    "description": "Palm forward, fingers together, waving side to side at head height",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/2.5", "+"],
+          ["mixamorigRightHand", "rotation", "y", "Math.PI/6", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHand", "rotation", "y", "-Math.PI/6", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHand", "rotation", "y", "0", "+"],
+          ["mixamorigRightArm", "rotation", "x", "0", "+"],
+          ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+        ]
+      }
+    ]
+  },
+  "WELCOME": {
+    "description": "Palm up, arcing from the side toward the center of the chest (classic ISL welcome/invite)",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+          ["mixamorigRightArm", "rotation", "y", "Math.PI/4", "+"],
+          ["mixamorigRightHand", "rotation", "x", "-Math.PI/2", "-"],
+          ["mixamorigRightHand", "rotation", "z", "Math.PI/4", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "y", "-Math.PI/6", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/8", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "0", "+"],
+          ["mixamorigRightArm", "rotation", "y", "0", "-"],
+          ["mixamorigRightHand", "rotation", "x", "0", "+"]
+        ]
+      }
+    ]
+  },
+  "AGAIN": {
+    "description": "Index and Middle fingers (V-shape) flicking forward twice",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHand", "rotation", "x", "Math.PI/4", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHand", "rotation", "x", "0", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "0", "+"],
+          ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+        ]
+      }
+    ]
+  },
+  "WHY": {
+    "description": "Right hand palm up, fingers slightly curled, shaking side to side at chest level",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"],
+          ["mixamorigRightHand", "rotation", "x", "-Math.PI/2", "-"],
+          ["mixamorigRightHand", "rotation", "z", "Math.PI/6", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHand", "rotation", "z", "-Math.PI/6", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "0", "+"],
+          ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+        ]
+      }
+    ]
+  },
+  "HOW": {
+    "description": "Both palms facing each other, then rotating outward to palm-up position",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigLeftArm", "rotation", "x", "-Math.PI/4", "-"],
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+          ["mixamorigLeftHand", "rotation", "y", "-Math.PI/2", "-"],
+          ["mixamorigRightHand", "rotation", "y", "Math.PI/2", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigLeftHand", "rotation", "y", "Math.PI/4", "+"],
+          ["mixamorigRightHand", "rotation", "y", "-Math.PI/4", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigLeftArm", "rotation", "x", "0", "+"],
+          ["mixamorigRightArm", "rotation", "x", "0", "+"]
+        ]
+      }
+    ]
+  },
+  "SEE": {
+    "description": "Index finger moving forward from eye level (Common ISL variant)",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/1.5", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/2.5", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/2.5", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "0", "+"],
+          ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+        ]
+      }
+    ]
+  },
+  "CAN": {
+    "description": "Thumb-up handshape moving slightly downward (ISL specific for 'Can/Ability')",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "0", "+"],
+          ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+        ]
+      }
+    ]
+  },
+  "HI": {
+    "description": "Short, informal wave gesture",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+          ["mixamorigRightArm", "rotation", "z", "Math.PI/4", "+"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHand", "rotation", "z", "Math.PI/8", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHand", "rotation", "z", "-Math.PI/8", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "0", "+"],
+          ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+          ["mixamorigRightHand", "rotation", "z", "0", "+"]
+        ]
+      }
+    ]
+  },
   "YOU": {
     "description": "Pointing gesture",
     "keyframes": [

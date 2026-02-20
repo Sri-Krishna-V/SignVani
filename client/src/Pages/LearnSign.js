@@ -17,8 +17,8 @@ import { useAnimationEngine } from '../Hooks/useAnimationEngine';
 
 function LearnSign() {
   const [bot, setBot] = useState(ybot);
-  const [speed, setSpeed] = useState(0.1);
-  const [pause, setPause] = useState(800);
+  const [speed, setSpeed] = useState(1.0);
+  const [pause, setPause] = useState(400);
 
   // Use custom hooks for Three.js scene and animation engine
   const ref = useThreeScene(bot, 'canvas');
@@ -92,7 +92,7 @@ function LearnSign() {
           <Slider
             axis="x"
             xmin={0.05}
-            xmax={0.50}
+            xmax={1.0}
             xstep={0.01}
             x={speed}
             onChange={({ x }) => setSpeed(x)}
