@@ -425,6 +425,19 @@ COLORS = {
 }
 
 
+# -----------------------------------------------------------------------------
+# TENSE / GRAMMAR MARKERS  (ISL time-reference signs)
+# Note: HamNoSys values are DGS-based approximations. Replace with authentic
+#       ISLRTC data when available.
+# -----------------------------------------------------------------------------
+TIME_MARKERS = {
+    # PAST — flat hand moves backward over the shoulder (away from body)
+    'PAST': 'hamflathand,hampalml,hamshoulders,hammoveo',
+    # FUTURE — flat hand pushes forward from the shoulder
+    'FUTURE': 'hamflathand,hampalmu,hamshoulders,hammoveo',
+}
+
+
 # =============================================================================
 # COMBINED GLOSSARY
 # =============================================================================
@@ -446,6 +459,7 @@ def get_all_glosses() -> Dict[str, str]:
     all_glosses.update(PREPOSITIONS)
     all_glosses.update(COLORS)
     all_glosses.update(FINGERSPELLING)
+    all_glosses.update(TIME_MARKERS)
     return all_glosses
 
 
@@ -479,6 +493,8 @@ def get_category_for_gloss(gloss: str) -> str:
         return 'colors'
     elif gloss in FINGERSPELLING:
         return 'fingerspelling'
+    elif gloss in TIME_MARKERS:
+        return 'time_markers'
     else:
         return 'unknown'
 
@@ -500,6 +516,7 @@ if __name__ == '__main__':
     print(f"  Prepositions: {len(PREPOSITIONS)}")
     print(f"  Colors: {len(COLORS)}")
     print(f"  Fingerspelling: {len(FINGERSPELLING)}")
+    print(f"  Time Markers: {len(TIME_MARKERS)}")
 
     print(f"\nSample entries:")
     for gloss in ['HELLO', 'I', 'LOVE', 'YOU', 'THANK']:

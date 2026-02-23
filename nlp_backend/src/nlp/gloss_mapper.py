@@ -9,7 +9,7 @@ import logging
 import time
 from typing import List, Optional
 
-from src.nlp.dataclasses import GlossPhrase, ProcessedText
+from src.nlp.dataclasses import GlossPhrase, GrammarMetadata, ProcessedText
 from src.nlp.text_processor import TextProcessor
 from src.nlp.grammar_transformer import GrammarTransformer
 from src.database.retriever import GlossRetriever
@@ -60,7 +60,9 @@ class GlossMapper:
         processed_text: ProcessedText = self.text_processor.process(text)
 
         # 2. Grammar Transformation
-        raw_glosses: List[str] = self.grammar_transformer.transform(
+        raw_glosses: List[str]
+        metadata: GrammarMetadata
+        raw_glosses, metadata = self.grammar_transformer.transform(
             processed_text)
 
         # 3. Gloss Validation & Mapping
@@ -81,11 +83,14 @@ class GlossMapper:
 
         total_time = (time.time() - start_time) * 1000
         logger.info(
-            f"NLP Pipeline: '{text}' -> {final_glosses} ({total_time:.2f}ms)")
+            f"NLP Pipeline: '{text}' -> {final_glosses} ({total_time:.2f}ms) | tense={metadata.tense}")
 
         return GlossPhrase(
             glosses=final_glosses,
-            original_text=text
+            original_text=text,
+            tense=metadata.tense,
+            is_negated=metadata.is_negated,
+            question_type=metadata.question_type,
         )
 
     def _fingerspell(self, word: str) -> List[str]:

@@ -6,6 +6,7 @@ Optimized for low-latency processing on Raspberry Pi 4.
 """
 
 import logging
+import re
 import string
 import time
 from typing import List, Tuple
@@ -23,6 +24,25 @@ class TextProcessor:
     """
     Lightweight NLP text processor using NLTK.
     """
+
+    # Contraction expansion map — applied before tokenisation so that NLTK
+    # POS tagger receives full-form tokens (e.g. "do not" rather than "n't").
+    CONTRACTIONS = {
+        "don't":    "do not",
+        "doesn't":  "does not",
+        "didn't":   "did not",
+        "can't":    "can not",
+        "won't":    "will not",
+        "isn't":    "is not",
+        "aren't":   "are not",
+        "wasn't":   "was not",
+        "weren't":  "were not",
+        "haven't":  "have not",
+        "hasn't":   "has not",
+        "couldn't": "could not",
+        "shouldn't": "should not",
+        "wouldn't": "would not",
+    }
 
     def __init__(self):
         """Initialize text processor and load NLTK resources."""
@@ -83,28 +103,35 @@ class TextProcessor:
         start_time = time.time()
         original_text = text
 
-        # 1. Lowercase
+        # Detect question-sentence flag before any transformation
+        ends_with_question: bool = original_text.strip().endswith('?')
+
+        # 1. Expand contractions (before lowercasing so patterns match any case)
+        text = self._expand_contractions(text)
+
+        # 2. Lowercase
         text = text.lower().strip()
 
-        # 2. Replace periods with special tokens before tokenization
+        # 3. Replace periods with special tokens before tokenization
         text = text.replace('.', ' <PERIOD> ')
         text = text.replace('?', ' <QUESTION> ')
         text = text.replace('!', ' <EXCLAMATION> ')
         text = text.replace(',', ' <COMMA> ')
 
-        # 3. Tokenize
+        # 4. Tokenize
         try:
             tokens = nltk.word_tokenize(text)
         except LookupError:
             # Fallback if punkt is missing
             tokens = text.split()
 
-        # 4. Handle punctuation tokens and filter empty tokens
+        # 5. Handle punctuation tokens and filter empty tokens
         clean_tokens = []
         for token in tokens:
             # Check if it's a special punctuation token
             if token in ['<period>', '<question>', '<exclamation>', '<comma>']:
-                clean_tokens.append(token.upper().replace('<', '').replace('>', ''))
+                clean_tokens.append(
+                    token.upper().replace('<', '').replace('>', ''))
             else:
                 # Remove regular punctuation from token
                 token = token.translate(self.punctuation_map)
@@ -113,7 +140,7 @@ class TextProcessor:
 
         tokens = clean_tokens
 
-        # 5. POS Tagging
+        # 6. POS Tagging
         # Uses averaged_perceptron_tagger (included in NLTK default)
         try:
             tagged_tokens = nltk.pos_tag(tokens)
@@ -122,7 +149,7 @@ class TextProcessor:
             logger.warning("POS tagger missing, using default tags")
             tagged_tokens = [(t, 'NN') for t in tokens]
 
-        # 6. Lemmatization
+        # 7. Lemmatization
         if self.lemmatizer:
             final_tagged = []
             for token, tag in tagged_tokens:
@@ -145,8 +172,28 @@ class TextProcessor:
         return ProcessedText(
             tokens=tokens,
             tagged_tokens=tagged_tokens,
-            original_text=original_text
+            original_text=original_text,
+            ends_with_question=ends_with_question,
         )
+
+    def _expand_contractions(self, text: str) -> str:
+        """
+        Replace common English contractions with their full forms.
+
+        Applied on the original-cased text before lowercasing so that
+        mixed-case input (e.g. "Don't") is handled correctly.
+
+        Args:
+            text: Raw input string.
+
+        Returns:
+            String with contractions replaced by full forms.
+        """
+        for contraction, expansion in self.CONTRACTIONS.items():
+            # Use word-boundary regex, case-insensitive
+            pattern = re.compile(re.escape(contraction), re.IGNORECASE)
+            text = pattern.sub(expansion, text)
+        return text
 
     def _get_wordnet_pos(self, treebank_tag):
         """Map Treebank POS tag to WordNet POS tag."""

@@ -92,10 +92,12 @@ class ProcessedText:
 
     Uses __slots__ for memory efficiency.
     """
-    __slots__ = ('tokens', 'tagged_tokens', 'original_text', 'timestamp')
+    __slots__ = ('tokens', 'tagged_tokens', 'original_text', 'timestamp',
+                 'ends_with_question')
 
     def __init__(self, tokens: List[str], tagged_tokens: List[tuple],
-                 original_text: str, timestamp: float = None):
+                 original_text: str, timestamp: float = None,
+                 ends_with_question: bool = False):
         """
         Initialize processed text.
 
@@ -104,15 +106,55 @@ class ProcessedText:
             tagged_tokens: List of (token, tag) tuples
             original_text: Original input text
             timestamp: Unix timestamp
+            ends_with_question: True when the original sentence ends with '?'
         """
         self.tokens = tokens
         self.tagged_tokens = tagged_tokens
         self.original_text = original_text
         self.timestamp = timestamp if timestamp is not None else time.time()
+        self.ends_with_question = ends_with_question
 
     def __repr__(self):
         return (f"ProcessedText(tokens={len(self.tokens)}, "
+                f"ends_with_question={self.ends_with_question}, "
                 f"original='{self.original_text}')")
+
+
+class GrammarMetadata:
+    """
+    Carries grammar-level annotations produced by GrammarTransformer.
+
+    Phases populate fields incrementally:
+      Phase 1 — tense
+      Phase 2 — is_negated
+      Phase 3 — question_type
+
+    Uses __slots__ for memory efficiency.
+    """
+    __slots__ = ('tense', 'is_negated', 'question_type')
+
+    def __init__(
+        self,
+        tense: Optional[str] = None,
+        is_negated: bool = False,
+        question_type: Optional[str] = None,
+    ):
+        """
+        Initialize grammar metadata.
+
+        Args:
+            tense: 'PAST', 'FUTURE', or None (present/default)
+            is_negated: True if the sentence contains negation
+            question_type: 'WH', 'YES_NO', or None (statement)
+        """
+        self.tense = tense
+        self.is_negated = is_negated
+        self.question_type = question_type
+
+    def __repr__(self):
+        return (f"GrammarMetadata(tense={self.tense!r}, "
+                f"is_negated={self.is_negated}, "
+                f"question_type={self.question_type!r})")
 
 
 class GlossPhrase:
@@ -121,9 +163,18 @@ class GlossPhrase:
 
     Uses __slots__ for memory efficiency in pipeline queues.
     """
-    __slots__ = ('glosses', 'original_text', 'timestamp')
+    __slots__ = ('glosses', 'original_text', 'timestamp',
+                 'tense', 'is_negated', 'question_type')
 
-    def __init__(self, glosses: List[str], original_text: str, timestamp: float = None):
+    def __init__(
+        self,
+        glosses: List[str],
+        original_text: str,
+        timestamp: float = None,
+        tense: Optional[str] = None,
+        is_negated: bool = False,
+        question_type: Optional[str] = None,
+    ):
         """
         Initialize gloss phrase.
 
@@ -131,10 +182,16 @@ class GlossPhrase:
             glosses: List of ISL glosses (uppercase convention)
             original_text: Original English text
             timestamp: Unix timestamp (defaults to current time)
+            tense: 'PAST', 'FUTURE', or None
+            is_negated: True if sentence contains negation
+            question_type: 'WH', 'YES_NO', or None
         """
         self.glosses = glosses
         self.original_text = original_text
         self.timestamp = timestamp if timestamp is not None else time.time()
+        self.tense = tense
+        self.is_negated = is_negated
+        self.question_type = question_type
 
     @property
     def gloss_string(self) -> str:
@@ -148,6 +205,7 @@ class GlossPhrase:
 
     def __repr__(self):
         return (f"GlossPhrase(glosses={self.gloss_string}, "
+                f"tense={self.tense!r}, "
                 f"original='{self.original_text}')")
 
 
