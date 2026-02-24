@@ -7,6 +7,43 @@ import { getWordAnimation } from './words';
  * Provides a clean interface for triggering alphabet and word animations
  */
 
+const DEFAULT_POSE_FRAME = [
+  // ── Non-zero default pose targets (include BOTH directions so the bone
+  //    can approach from either side after any arbitrary word animation) ──
+  ["mixamorigNeck",         "rotation", "x",  Math.PI / 12,   "+"],
+  ["mixamorigNeck",         "rotation", "x",  Math.PI / 12,   "-"],
+  ["mixamorigLeftArm",      "rotation", "z", -Math.PI / 3,    "+"],
+  ["mixamorigLeftArm",      "rotation", "z", -Math.PI / 3,    "-"],
+  ["mixamorigLeftForeArm",  "rotation", "y", -Math.PI / 1.5,  "+"],
+  ["mixamorigLeftForeArm",  "rotation", "y", -Math.PI / 1.5,  "-"],
+  ["mixamorigRightArm",     "rotation", "z",  Math.PI / 3,    "+"],
+  ["mixamorigRightArm",     "rotation", "z",  Math.PI / 3,    "-"],
+  ["mixamorigRightForeArm", "rotation", "y",  Math.PI / 1.5,  "+"],
+  ["mixamorigRightForeArm", "rotation", "y",  Math.PI / 1.5,  "-"],
+
+  // ── Axes that should return to 0 (bidirectional: "+" from below, "-" from above) ──
+  // Arm X and Y (words like HAPPY/SAD displace these)
+  ["mixamorigLeftArm",      "rotation", "x", 0, "+"], ["mixamorigLeftArm",      "rotation", "x", 0, "-"],
+  ["mixamorigLeftArm",      "rotation", "y", 0, "+"], ["mixamorigLeftArm",      "rotation", "y", 0, "-"],
+  ["mixamorigRightArm",     "rotation", "x", 0, "+"], ["mixamorigRightArm",     "rotation", "x", 0, "-"],
+  ["mixamorigRightArm",     "rotation", "y", 0, "+"], ["mixamorigRightArm",     "rotation", "y", 0, "-"],
+  // ForeArm X and Z (HAPPY/SAD displace ForeArm.z and never reset it)
+  ["mixamorigLeftForeArm",  "rotation", "x", 0, "+"], ["mixamorigLeftForeArm",  "rotation", "x", 0, "-"],
+  ["mixamorigLeftForeArm",  "rotation", "z", 0, "+"], ["mixamorigLeftForeArm",  "rotation", "z", 0, "-"],
+  ["mixamorigRightForeArm", "rotation", "x", 0, "+"], ["mixamorigRightForeArm", "rotation", "x", 0, "-"],
+  ["mixamorigRightForeArm", "rotation", "z", 0, "+"], ["mixamorigRightForeArm", "rotation", "z", 0, "-"],
+  // Hand rotations
+  ["mixamorigLeftHand",     "rotation", "x", 0, "+"], ["mixamorigLeftHand",     "rotation", "x", 0, "-"],
+  ["mixamorigLeftHand",     "rotation", "y", 0, "+"], ["mixamorigLeftHand",     "rotation", "y", 0, "-"],
+  ["mixamorigLeftHand",     "rotation", "z", 0, "+"], ["mixamorigLeftHand",     "rotation", "z", 0, "-"],
+  ["mixamorigRightHand",    "rotation", "x", 0, "+"], ["mixamorigRightHand",    "rotation", "x", 0, "-"],
+  ["mixamorigRightHand",    "rotation", "y", 0, "+"], ["mixamorigRightHand",    "rotation", "y", 0, "-"],
+  ["mixamorigRightHand",    "rotation", "z", 0, "+"], ["mixamorigRightHand",    "rotation", "z", 0, "-"],
+  // Neck Y and Z
+  ["mixamorigNeck",         "rotation", "y", 0, "+"], ["mixamorigNeck",         "rotation", "y", 0, "-"],
+  ["mixamorigNeck",         "rotation", "z", 0, "+"], ["mixamorigNeck",         "rotation", "z", 0, "-"],
+];
+
 /**
  * Play animation for a single character
  * @param {Object} ref - Reference object from useThreeScene hook
@@ -35,6 +72,9 @@ export const playAnimation = (ref, character) => {
   
   // Execute animation function
   alphabets[upperChar](ref);
+
+  // Return to neutral pose after the sign
+  ref.animations.push([...DEFAULT_POSE_FRAME]);
   
   // Start animation if not already running
   if (ref.animate && ref.pending === false && ref.animations.length > 0) {
@@ -61,8 +101,10 @@ export const playWord = (ref, word) => {
     return false;
   }
   
-  // Check if word animation exists (named export or dynamic lookup)
-  const wordAnim = words[cleanWord] || getWordAnimation(cleanWord);
+  // Try original (preserving underscores/special chars) before stripping.
+  // This ensures words like PLEASE_NAMASTE resolve correctly from the JSON.
+  const wordAnim = words[upperWord] || getWordAnimation(upperWord)
+                || words[cleanWord] || getWordAnimation(cleanWord);
   if (!wordAnim) {
     console.warn(`No animation found for word: ${cleanWord}`);
     return false;
@@ -70,6 +112,9 @@ export const playWord = (ref, word) => {
   
   // Execute word animation function
   wordAnim(ref);
+
+  // Return to neutral pose after the sign
+  ref.animations.push([...DEFAULT_POSE_FRAME]);
   
   // Start animation if not already running
   if (ref.animate && ref.pending === false && ref.animations.length > 0) {
@@ -158,6 +203,12 @@ export const playString = (ref, inputString, addTextMarkers = true) => {
     }
   }
   
+  // Append reset-to-default-pose as the final frame so the avatar
+  // always returns to its neutral resting position after a sentence.
+  if (animationsQueued) {
+    ref.animations.push([...DEFAULT_POSE_FRAME]);
+  }
+
   // Start animation if not already running
   if (animationsQueued && ref.animate && ref.pending === false && ref.animations.length > 0) {
     ref.pending = true;

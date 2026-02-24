@@ -66,7 +66,8 @@ class NLPConfig:
 
     # Processing options
     LEMMATIZATION_ENABLED: bool = True
-    MIN_TOKEN_LENGTH: int = 2         # Filter out single characters
+    # Allow single-char tokens (e.g. pronoun "I")
+    MIN_TOKEN_LENGTH: int = 1
 
     # Grammar transformation
     TRANSFORM_SVO_TO_SOV: bool = True  # Enable SVO→SOV transformation
@@ -175,8 +176,8 @@ def print_config():
         'NLP': nlp_config,
         'Database': database_config,
         'Pipeline': pipeline_config,
-        'SiGML': sigml_config,        
-        'Avatar': avatar_config,        
+        'SiGML': sigml_config,
+        'Avatar': avatar_config,
         'Logging': logging_config
     }
 

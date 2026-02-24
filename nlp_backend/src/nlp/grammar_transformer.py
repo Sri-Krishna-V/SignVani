@@ -42,6 +42,21 @@ class GrammarTransformer:
         'today', 'tomorrow', 'yesterday', 'now', 'later', 'morning', 'evening', 'night'
     }
 
+    # Time words that inherently encode PAST tense — suppress the tense marker
+    # when these are present (e.g. "yesterday" already means past; no need for PAST)
+    PAST_TIME_WORDS = {'yesterday'}
+
+    # Time words that inherently encode FUTURE tense
+    FUTURE_TIME_WORDS = {'tomorrow'}
+
+    # Do-support auxiliaries that are dropped in question sentences (they are
+    # grammatical placeholders with no ISL lexical content)
+    QUESTION_AUXILIARIES = {'do', 'does'}
+
+    # Punctuation sentinel tokens emitted by TextProcessor (e.g. '?' → 'QUESTION')
+    # These must be filtered out before ISL classification.
+    PUNCT_TOKENS = {'question', 'period', 'exclamation', 'comma'}
+
     # Negation words
     NEGATION_WORDS = {'no', 'not', 'never', "n't"}
 
@@ -98,8 +113,14 @@ class GrammarTransformer:
         # 0: Pre-verb (Subject), 1: Verb found, 2: Post-verb (Object)
         state = 0
 
+        ends_with_question: bool = getattr(processed_text, 'ends_with_question', False)
+
         for word, tag in tags:
             word_lower = word.lower()
+
+            # --- Filter punctuation sentinel tokens (e.g. QUESTION, PERIOD) ---
+            if word_lower in self.PUNCT_TOKENS:
+                continue
 
             # --- Tense auxiliaries (consume without emitting into output) ---
             if word_lower in self.PAST_AUXILIARIES:
@@ -109,6 +130,18 @@ class GrammarTransformer:
             if word_lower in self.FUTURE_AUXILIARIES:
                 detected_tense = 'FUTURE'
                 continue
+
+            # --- Question-forming auxiliaries: drop in question sentences ---
+            # "do/does" in "Where do you live?" are pure grammatical placeholders
+            if ends_with_question and word_lower in self.QUESTION_AUXILIARIES:
+                continue
+
+            # Detect PAST from VBD/VBN morphology BEFORE stopword filtering.
+            # This handles the case where TextProcessor lemmatises 'was'/'were'
+            # → 'be', which would otherwise be swallowed by the STOPWORDS check
+            # below before the per-verb morphology check is ever reached.
+            if detected_tense is None and tag in ('VBD', 'VBN'):
+                detected_tense = 'PAST'
 
             # Skip remaining stopwords
             if word_lower in self.STOPWORDS:
@@ -159,7 +192,13 @@ class GrammarTransformer:
 
         isl_sequence = []
 
-        if detected_tense:
+        # Suppress tense marker when a time word already encodes the tense.
+        # e.g. "yesterday" → PAST is redundant; "tomorrow" → FUTURE is redundant.
+        tense_implied_by_time = (
+            (detected_tense == 'PAST'   and any(t.lower() in self.PAST_TIME_WORDS   for t in time_markers)) or
+            (detected_tense == 'FUTURE' and any(t.lower() in self.FUTURE_TIME_WORDS for t in time_markers))
+        )
+        if detected_tense and not tense_implied_by_time:
             isl_sequence.append(detected_tense)
         isl_sequence.extend(time_markers)
         isl_sequence.extend(subjects)

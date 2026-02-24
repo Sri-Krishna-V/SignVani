@@ -8,6 +8,7 @@ from src.nlp.dataclasses import GlossPhrase, SiGMLOutput
 from src.sigml.generator import SiGMLGenerator
 from src.nlp.gloss_mapper import GlossMapper
 from src.pipeline.orchestrator import PipelineOrchestrator
+from src.database.seed_db import seed_database
 import asyncio
 import logging
 import io
@@ -90,6 +91,11 @@ async def startup_event():
     logger.info("Initializing SignVani API...")
 
     try:
+        # Seed the gloss database (INSERT OR IGNORE — safe to call on every startup)
+        logger.info("Seeding ISL gloss database...")
+        seed_database(force_update=False)
+        logger.info("Database seeded.")
+
         # Initialize NLP components
         logger.info("Loading NLP models...")
         gloss_mapper = GlossMapper(prewarm=True)

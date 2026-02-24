@@ -8,6 +8,38 @@ import * as words from '../Animations/words';
 import { getWordAnimation } from '../Animations/words';
 import apiService from './apiService';
 
+// Comprehensive bidirectional reset frame — mirrors animationPlayer.js DEFAULT_POSE_FRAME.
+// Each bone-axis pair appears twice ('+' and '-') so the avatar can reach the default
+// position regardless of which direction the preceding animation left the bone.
+const DEFAULT_POSE_FRAME = [
+  ["mixamorigNeck",         "rotation", "x",  Math.PI / 12,   "+"],
+  ["mixamorigNeck",         "rotation", "x",  Math.PI / 12,   "-"],
+  ["mixamorigLeftArm",      "rotation", "z", -Math.PI / 3,    "+"],
+  ["mixamorigLeftArm",      "rotation", "z", -Math.PI / 3,    "-"],
+  ["mixamorigLeftForeArm",  "rotation", "y", -Math.PI / 1.5,  "+"],
+  ["mixamorigLeftForeArm",  "rotation", "y", -Math.PI / 1.5,  "-"],
+  ["mixamorigRightArm",     "rotation", "z",  Math.PI / 3,    "+"],
+  ["mixamorigRightArm",     "rotation", "z",  Math.PI / 3,    "-"],
+  ["mixamorigRightForeArm", "rotation", "y",  Math.PI / 1.5,  "+"],
+  ["mixamorigRightForeArm", "rotation", "y",  Math.PI / 1.5,  "-"],
+  ["mixamorigLeftArm",      "rotation", "x", 0, "+"], ["mixamorigLeftArm",      "rotation", "x", 0, "-"],
+  ["mixamorigLeftArm",      "rotation", "y", 0, "+"], ["mixamorigLeftArm",      "rotation", "y", 0, "-"],
+  ["mixamorigRightArm",     "rotation", "x", 0, "+"], ["mixamorigRightArm",     "rotation", "x", 0, "-"],
+  ["mixamorigRightArm",     "rotation", "y", 0, "+"], ["mixamorigRightArm",     "rotation", "y", 0, "-"],
+  ["mixamorigLeftForeArm",  "rotation", "x", 0, "+"], ["mixamorigLeftForeArm",  "rotation", "x", 0, "-"],
+  ["mixamorigLeftForeArm",  "rotation", "z", 0, "+"], ["mixamorigLeftForeArm",  "rotation", "z", 0, "-"],
+  ["mixamorigRightForeArm", "rotation", "x", 0, "+"], ["mixamorigRightForeArm", "rotation", "x", 0, "-"],
+  ["mixamorigRightForeArm", "rotation", "z", 0, "+"], ["mixamorigRightForeArm", "rotation", "z", 0, "-"],
+  ["mixamorigLeftHand",     "rotation", "x", 0, "+"], ["mixamorigLeftHand",     "rotation", "x", 0, "-"],
+  ["mixamorigLeftHand",     "rotation", "y", 0, "+"], ["mixamorigLeftHand",     "rotation", "y", 0, "-"],
+  ["mixamorigLeftHand",     "rotation", "z", 0, "+"], ["mixamorigLeftHand",     "rotation", "z", 0, "-"],
+  ["mixamorigRightHand",    "rotation", "x", 0, "+"], ["mixamorigRightHand",    "rotation", "x", 0, "-"],
+  ["mixamorigRightHand",    "rotation", "y", 0, "+"], ["mixamorigRightHand",    "rotation", "y", 0, "-"],
+  ["mixamorigRightHand",    "rotation", "z", 0, "+"], ["mixamorigRightHand",    "rotation", "z", 0, "-"],
+  ["mixamorigNeck",         "rotation", "y", 0, "+"], ["mixamorigNeck",         "rotation", "y", 0, "-"],
+  ["mixamorigNeck",         "rotation", "z", 0, "+"], ["mixamorigNeck",         "rotation", "z", 0, "-"],
+];
+
 class EnhancedAnimationPlayer {
   constructor(ref) {
     this.ref = ref;
@@ -130,8 +162,9 @@ class EnhancedAnimationPlayer {
       const cleanWord = word.replace(/[^A-Z]/g, '');
       if (cleanWord.length === 0) continue;
 
-      // Try word animation first (named export or dynamic lookup)
-      const wordAnim = words[cleanWord] || getWordAnimation(cleanWord);
+      // Try word animation first — preserve special chars (e.g. PLEASE_NAMASTE) before stripping
+      const wordAnim = words[word] || getWordAnimation(word)
+                    || words[cleanWord] || getWordAnimation(cleanWord);
       if (wordAnim) {
         this.ref.animations.push(['add-text', cleanWord + ' ']);
         wordAnim(this.ref);
@@ -157,6 +190,11 @@ class EnhancedAnimationPlayer {
     if (animationsQueued && this.ref.animate && this.ref.pending === false) {
       this.ref.pending = true;
       this.ref.animate();
+    }
+
+    // Append reset-to-default-pose as the final queued frame
+    if (animationsQueued) {
+      this.ref.animations.push([...DEFAULT_POSE_FRAME]);
     }
 
     return animationsQueued;
@@ -237,7 +275,10 @@ export const playAnimation = (ref, character) => {
   }
   
   alphabets[upperChar](ref);
-  
+
+  // Return to neutral pose after the sign
+  ref.animations.push([...DEFAULT_POSE_FRAME]);
+
   if (ref.animate && ref.pending === false && ref.animations.length > 0) {
     ref.pending = true;
     ref.animate();
@@ -255,14 +296,19 @@ export const playWord = (ref, word) => {
     return false;
   }
   
-  const wordAnim = words[cleanWord] || getWordAnimation(cleanWord);
+  // Try original word name (preserving underscores) before stripping
+  const wordAnim = words[upperWord] || getWordAnimation(upperWord)
+                || words[cleanWord] || getWordAnimation(cleanWord);
   if (!wordAnim) {
     console.warn(`No animation found for word: ${cleanWord}`);
     return false;
   }
   
   wordAnim(ref);
-  
+
+  // Return to neutral pose after the sign
+  ref.animations.push([...DEFAULT_POSE_FRAME]);
+
   if (ref.animate && ref.pending === false && ref.animations.length > 0) {
     ref.pending = true;
     ref.animate();

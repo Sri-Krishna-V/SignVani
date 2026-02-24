@@ -36,6 +36,10 @@ GREETINGS = {
     'PLEASE': 'hamflathand,hampalml,hamchest,hamcircle',
     'SORRY': 'hamfist,hampalml,hamchest,hamcircle',
     'EXCUSE': 'hamflathand,hampalmd,hamlowerarm,hammover',
+    'BYE': 'hamflathand,hamextfingeru,hampalmout,hamshoulders,hammoved,hamrepeat',
+    'HI': 'hamflathand,hamextfingeru,hampalmout,hamshoulders,hammover',
+    'PLEASE_NAMASTE': 'hamflathand,hampalmu,hamchest,hamcircle,hamrepeat',
+    'AGAIN': 'hamflathand,hampalmu,hamneutralspace,hamarcu,hamrepeat',
 }
 
 # -----------------------------------------------------------------------------
@@ -68,6 +72,7 @@ PRONOUNS = {
     'THAT': 'hamfinger2,hamextfingero,hampalmout,hamneutralspace,hammoveo',
     'THESE': 'hamfinger2,hamextfingerd,hampalmout,hamneutralspace,hammover',
     'THOSE': 'hamfinger2,hamextfingero,hampalmout,hamneutralspace,hammover',
+    'WHICH': 'hamflathand,hampalmu,hamneutralspace,hammover,hamrepeat',
 }
 
 # -----------------------------------------------------------------------------
@@ -175,6 +180,8 @@ NOUNS = {
     'PARENT': 'hamflathand,hampalml,hamforehead,hamchin',
     'FAMILY': 'hamfinger2345,hampalmo,hamneutralspace,hamcircle',
     'FRIEND': 'hamfinger2,hamextfingeru,hampalmout,hamneutralspace,hamrepeat',
+    'BROTHER': 'hamfinger23,hamextfingeru,hampalmout,hamforehead,hammover',
+    'SISTER': 'hamfinger2,hamextfingeru,hampalmout,hamchin,hammoveo',
     'TEACHER': 'hamflathand,hampalmo,hamforehead,hammoveo,hamrepeat',
     'STUDENT': 'hamflathand,hampalmu,hamforehead,hammovei',
     'DOCTOR': 'hamflathand,hampalmd,hamwrist,hamrepeat',
@@ -267,6 +274,10 @@ ADJECTIVES = {
     'TIRED': 'hamflathand,hampalmi,hamchest,hammoved',
     'HUNGRY': 'hamcee12,hampalmi,hamchest,hammoved',
     'THIRSTY': 'hamfinger2,hamextfingerd,hampalmi,hamneck,hammoved',
+    'BORED': 'hamflathand,hampalml,hamcheek,hammoveo',
+    'EXCITED': 'hamflathand,hampalmi,hamchest,hammoveu,hamfast,hamrepeat',
+    'SCARED': 'hamflathand,hampalmout,hamchest,hammoveo',
+    'SICK': 'hamfinger2,hamextfingeru,hampalml,hamforehead,hamcircle',
     'HOT': 'hamcee12,hampalmi,hammouth,hammoveo',
     'COLD': 'hamfist,hampalmi,hamshoulders,hamrepeat',
     'WARM': 'hamcee12,hampalmi,hammouth,hammoveu',
@@ -395,6 +406,9 @@ PREPOSITIONS = {
     'FRONT': 'hamflathand,hampalmi,hamneutralspace,hammoveo',
     'NEAR': 'hamflathand,hampalmout,hamneutralspace,hammovei',
     'FAR': 'hamflathand,hampalmout,hamneutralspace,hammoveo',
+    'BACK': 'hamthumb,hampalmi,hamchest,hammovei',
+    'INSIDE': 'hamflathand,hampalmd,hamneutralspace,hammovei',
+    'LEFT': 'hamflathand,hampalmout,hamneutralspace,hammovel',
     'AND': 'hamflathand,hampalml,hamneutralspace,hammover',
     'OR': 'hamfinger2,hamextfingeru,hampalmout,hamneutralspace,hammover',
     'BUT': 'hamfinger23,hamextfingerr,hampalmout,hamneutralspace,hammoveo',
@@ -403,6 +417,7 @@ PREPOSITIONS = {
     'BECAUSE': 'hamfinger2,hamextfingeru,hampalml,hamforehead,hammoveo',
     'SO': 'hamfinger2,hamextfingerr,hampalmout,hamneutralspace',
     'NOT': 'hamthumb,hampalmout,hamchin,hammoveo',
+    "DON'T": 'hamfinger2,hamextfingeru,hampalmout,hamneutralspace,hamrepeat',
     'NO': 'hamfinger23,hamthumboutmod,hampalmout,hamneutralspace',
     'YES': 'hamfist,hampalmout,hamneutralspace,hammoved',
 }
@@ -435,6 +450,8 @@ TIME_MARKERS = {
     'PAST': 'hamflathand,hampalml,hamshoulders,hammoveo',
     # FUTURE — flat hand pushes forward from the shoulder
     'FUTURE': 'hamflathand,hampalmu,hamshoulders,hammoveo',
+    # LATER — bent hand moves forward slightly (near future)
+    'LATER': 'hamthumb,hampalml,hamforehead,hammoveo',
 }
 
 

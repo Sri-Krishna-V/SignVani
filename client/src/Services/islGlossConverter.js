@@ -36,19 +36,24 @@ const TIME_WORDS = new Set([
 
 const NEGATION_WORDS = new Set(['no', 'not', 'never', "n't"]);
 
+// "do/does" are dropped in question sentences (pure grammatical auxiliaries).
+const QUESTION_AUXILIARIES = new Set(['do', 'does']);
+
+// Time words that inherently encode PAST/FUTURE — suppress tense marker when present.
+const PAST_TIME_WORDS  = new Set(['yesterday']);
+const FUTURE_TIME_WORDS = new Set(['tomorrow']);
+
 // ── Step 1: processText ──────────────────────────────────────────────────────
 
 /**
  * Tokenise, POS-tag, and lemmatise English text using compromise.
  *
- * Returns an array of { word, tag } objects where tag is one of:
- *   'VB' (verb)  |  'NN' (noun)  |  'PR' (pronoun)  |  'JJ' (adjective)  |  'OTHER'
- *
- * Lemmatisation:
- *   - Verbs → infinitive form  ("going" → "go", "eating" → "eat")
- *   - Nouns → singular form    ("markets" → "market", "cats" → "cat")
+ * Returns an object with:
+ *   - tagged: array of { word, tag } objects
+ *   - endsWithQuestion: boolean (true if original text ends with '?')
  */
 function processText(text) {
+  const endsWithQuestion = text.trim().endsWith('?');
   const doc = nlp(text.toLowerCase().trim());
 
   // Lemmatise before extracting terms so the normalised forms are used
@@ -57,7 +62,7 @@ function processText(text) {
 
   const terms = doc.terms().json();
 
-  return terms.map(term => {
+  const tagged = terms.map(term => {
     const tags = term.tags || [];
     let posTag = 'OTHER';
 
@@ -69,6 +74,8 @@ function processText(text) {
     // Prefer the lemmatised normal form; fall back to raw text
     return { word: term.normal || term.text, tag: posTag };
   });
+
+  return { tagged, endsWithQuestion };
 }
 
 // ── Step 2: transformToSOV ───────────────────────────────────────────────────
@@ -88,7 +95,7 @@ function processText(text) {
  *   "What is your name"   → ["YOUR", "NAME", "WHAT"]
  *   "I am going to market"→ ["I", "MARKET", "GO"]
  */
-function transformToSOV(taggedTokens) {
+function transformToSOV(taggedTokens, endsWithQuestion = false) {
   const subjects        = [];
   const verbs           = [];
   const objects         = [];
@@ -102,6 +109,8 @@ function transformToSOV(taggedTokens) {
     const lower = word.toLowerCase();
 
     if (STOPWORDS.has(lower))      continue;
+    // Drop do/does when in a question sentence (pure grammatical auxiliaries)
+    if (endsWithQuestion && QUESTION_AUXILIARIES.has(lower)) continue;
     if (TIME_WORDS.has(lower))     { timeMarkers.push(word);     continue; }
     if (QUESTION_WORDS.has(lower)) { questionMarkers.push(word); continue; }
     if (NEGATION_WORDS.has(lower)) { negations.push(word);       continue; }
@@ -149,8 +158,8 @@ export function convertToISLGloss(text) {
   }
 
   try {
-    const tagged  = processText(text);
-    const glosses = transformToSOV(tagged);
+    const { tagged, endsWithQuestion } = processText(text);
+    const glosses = transformToSOV(tagged, endsWithQuestion);
 
     return {
       glosses,
