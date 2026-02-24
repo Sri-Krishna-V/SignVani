@@ -53,7 +53,7 @@ function Videos() {
             Explore ISL Videos!
           </div>
           <div className="lead text-center">
-            Welcome to the ISL video section of Sign Kit. Create your own public
+            Welcome to the ISL video section of SignVani. Create your own public
             or private videos, share with your friends and colleagues or browse
             through the videos created by others and shared with the entire
             community!

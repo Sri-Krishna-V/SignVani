@@ -8,7 +8,7 @@ function Masthead() {
         style={{ flexDirection: "column" }}
       >
         <div className="col-lg-7 text-white font-weight-bold display-1 text-center">
-          Welcome to Sign Kit!
+          Welcome to SignVani!
         </div>
         <div className="col-lg-4 divider my-4" />
         <div

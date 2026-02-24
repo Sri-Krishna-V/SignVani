@@ -19,7 +19,7 @@ function Footer() {
                 <div className="container text-md-left mt-5">
                     <div className="row mt-3">
                         <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                            <h6 className="text-uppercase font-weight-bold">SIGN KIT</h6>
+                            <h6 className="text-uppercase font-weight-bold">SIGNVANI</h6>
                             <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{ width: '60px' }} />
                             <p className='footer-text'>A comprehensive toolkit containing various features related to Indian Sign Language.</p>
                         </div>

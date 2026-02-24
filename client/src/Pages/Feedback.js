@@ -22,7 +22,7 @@ function Feedback() {
       <div className="container row d-flex justify-content-between">
         <div className="card card mb-3 col-md-5 p-0 border border-primary">
           <div className="card-header text-center bg-primary text-white">
-            Sign Kit: Feedback Form 1
+            SignVani: Feedback Form 1
           </div>
           <div className="card-body d-flex flex-column justify-content-between">
             <div>
@@ -48,7 +48,7 @@ function Feedback() {
 
         <div className="card card mb-3 col-md-5 p-0 border border-primary">
           <div className="card-header text-center bg-primary text-white">
-            Sign Kit: Feedback Form 2
+            SignVani: Feedback Form 2
           </div>
           <div className="card-body d-flex flex-column justify-content-between">
             <div>
@@ -76,7 +76,7 @@ function Feedback() {
       <div className="container row d-flex justify-content-between">
         <div className="card card mb-3 col-md-5 p-0 border border-primary">
           <div className="card-header text-center bg-primary text-white">
-            Sign Kit: Feedback Form 3
+            SignVani: Feedback Form 3
           </div>
           <div className="card-body d-flex flex-column justify-content-between">
             <div>
@@ -104,7 +104,7 @@ function Feedback() {
 
         <div className="card card mb-3 col-md-5 p-0 border border-primary">
           <div className="card-header text-center bg-primary text-white">
-            Sign Kit: Feedback Form 4
+            SignVani: Feedback Form 4
           </div>
           <div className="card-body d-flex flex-column justify-content-between">
             <div>
@@ -134,7 +134,7 @@ function Feedback() {
       <div className="container row d-flex justify-content-between">
         <div className="card card col-md-5 p-0 border border-primary">
           <div className="card-header text-center bg-primary text-white">
-            Sign Kit: Feedback Form 5
+            SignVani: Feedback Form 5
           </div>
           <div className="card-body d-flex flex-column justify-content-between">
             <div>

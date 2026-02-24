@@ -8,7 +8,7 @@ function Navbar() {
             <div className="container px-4 px-lg-5">
                 <Link to='/sign-kit/home' className="navbar-brand mb-0 h1">
                     <img src={logo} width="30" height="30" className="d-inline-block align-top me-3" alt="Logo" />
-                    Sign Kit
+                    SignVani
                 </Link>
                 <button className="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
