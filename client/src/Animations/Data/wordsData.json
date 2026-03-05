@@ -1,0 +1,3019 @@
+  {
+    "TIME": {
+      "description": "Tapping wrist to indicate time",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigLeftHandIndex1", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandIndex2", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandIndex3", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandMiddle2", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandMiddle3", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandRing2", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandRing3", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandPinky2", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandPinky3", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandThumb1", "rotation", "y", "-Math.PI/4", "-"],
+            ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/4", "-"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/2.5", "-"],
+            ["mixamorigLeftHand", "rotation", "x", "Math.PI/6", "+"],
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle3", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing3", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky3", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3.5", "+"],
+            ["mixamorigRightArm", "rotation", "y", "Math.PI/9", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/12", "+"],
+            ["mixamorigRightHand", "rotation", "x", "Math.PI/6", "+"],
+            ["mixamorigRightHand", "rotation", "y", "Math.PI/6", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/12", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigLeftHandIndex1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandIndex2", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandIndex3", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandMiddle2", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandMiddle3", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandRing2", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandRing3", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandPinky2", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandPinky3", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandThumb1", "rotation", "y", "0", "+"],
+            ["mixamorigLeftForeArm", "rotation", "z", "0", "+"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/3", "+"],
+            ["mixamorigLeftHand", "rotation", "x", "0", "-"],
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle3", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing3", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky3", "rotation", "z", "0", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "y", "0", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigRightHand", "rotation", "x", "0", "-"],
+            ["mixamorigRightHand", "rotation", "y", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "NOT": {
+      "description": "Thumb flicking forward from under the chin",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/3", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "x", "Math.PI/4", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigRightHand", "rotation", "x", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "DON'T": {
+      "description": "Index finger wagging side to side",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "y", "Math.PI/6", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "y", "-Math.PI/6", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "NEVER": {
+      "description": "Flat hand carving a downward arc in the air",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+            ["mixamorigRightArm", "rotation", "y", "Math.PI/6", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/3", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "+"],
+            ["mixamorigRightArm", "rotation", "y", "-Math.PI/4", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "y", "0", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "HOME": {
+      "description": "House shape with hands",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigLeftHandThumb1", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigLeftForeArm", "rotation", "x", "Math.PI/70", "+"],
+            ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/7", "-"],
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "x", "Math.PI/70", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/7", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigLeftForeArm", "rotation", "y", "-Math.PI/2.5", "+"],
+            ["mixamorigRightForeArm", "rotation", "y", "Math.PI/2.5", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigLeftHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigLeftForeArm", "rotation", "x", "0", "-"],
+            ["mixamorigLeftForeArm", "rotation", "z", "0", "+"],
+            ["mixamorigLeftArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "x", "0", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigLeftForeArm", "rotation", "y", "-Math.PI/1.5", "-"],
+            ["mixamorigRightForeArm", "rotation", "y", "Math.PI/1.5", "+"]
+          ]
+        }
+      ]
+    },
+    "PERSON": {
+      "description": "P handshape moving down body",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/9", "+"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "Math.PI/4.5", "+"],
+            ["mixamorigRightHandIndex3", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle3", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing3", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky3", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/7", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/7", "+"],
+            ["mixamorigRightHand", "rotation", "y", "-Math.PI/5", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandIndex3", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle3", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing3", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky3", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigRightHand", "rotation", "y", "0", "+"]
+          ]
+        }
+      ]
+    },
+    "BYE": {
+      "description": "Palm forward, fingers together, waving side to side at head height",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/2.5", "+"],
+            ["mixamorigRightHand", "rotation", "y", "Math.PI/6", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "y", "-Math.PI/6", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "y", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "WELCOME": {
+      "description": "Palm up, arcing from the side toward the center of the chest (classic ISL welcome/invite)",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "y", "Math.PI/4", "+"],
+            ["mixamorigRightHand", "rotation", "x", "-Math.PI/2", "-"],
+            ["mixamorigRightHand", "rotation", "z", "Math.PI/4", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "y", "-Math.PI/6", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/8", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "y", "0", "-"],
+            ["mixamorigRightHand", "rotation", "x", "0", "+"]
+          ]
+        }
+      ]
+    },
+    "AGAIN": {
+      "description": "Index and Middle fingers (V-shape) flicking forward twice",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "x", "Math.PI/4", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "x", "0", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "WHY": {
+      "description": "Right hand palm up, fingers slightly curled, shaking side to side at chest level",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightHand", "rotation", "x", "-Math.PI/2", "-"],
+            ["mixamorigRightHand", "rotation", "z", "Math.PI/6", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "z", "-Math.PI/6", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "HOW": {
+      "description": "Both palms facing each other, then rotating outward to palm-up position",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigLeftHand", "rotation", "y", "-Math.PI/2", "-"],
+            ["mixamorigRightHand", "rotation", "y", "Math.PI/2", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigLeftHand", "rotation", "y", "Math.PI/4", "+"],
+            ["mixamorigRightHand", "rotation", "y", "-Math.PI/4", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigLeftArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"]
+          ]
+        }
+      ]
+    },
+    "SEE": {
+      "description": "Index finger moving forward from eye level (Common ISL variant)",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/1.5", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/2.5", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/2.5", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "CAN": {
+      "description": "Thumb-up handshape moving slightly downward (ISL specific for 'Can/Ability')",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "HI": {
+      "description": "Short, informal wave gesture",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "z", "Math.PI/8", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "z", "-Math.PI/8", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigRightHand", "rotation", "z", "0", "+"]
+          ]
+        }
+      ]
+    },
+    "YOU": {
+      "description": "Pointing gesture",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle3", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing3", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky3", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/8", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/9", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/10", "+"],
+            ["mixamorigRightHand", "rotation", "y", "-Math.PI/5", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle3", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing3", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky3", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigRightHand", "rotation", "y", "0", "+"]
+          ]
+        }
+      ]
+    },
+    "HELLO": {
+      "description": "Wave gesture",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "z", "Math.PI/6", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "z", "-Math.PI/6", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigRightHand", "rotation", "z", "0", "+"]
+          ]
+        }
+      ]
+    },
+    "THANK": {
+      "description": "Hand from chin moving forward",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "+"],
+            ["mixamorigRightHand", "rotation", "x", "-Math.PI/6", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigRightHand", "rotation", "x", "0", "+"]
+          ]
+        }
+      ]
+    },
+    "PLEASE": {
+      "description": "Flat hand on chest, circular motion",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "y", "-Math.PI/8", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightHand", "rotation", "y", "-Math.PI/4", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "y", "Math.PI/8", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "y", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigRightHand", "rotation", "y", "0", "+"]
+          ]
+        }
+      ]
+    },
+    "SORRY": {
+      "description": "Fist on chest, circular motion",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "y", "-Math.PI/6", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "y", "Math.PI/8", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "y", "-Math.PI/6", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "y", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "YES": {
+      "description": "Fist nodding motion",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "x", "Math.PI/6", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "x", "0", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "NO": {
+      "description": "Two fingers shaking side to side",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "y", "-Math.PI/8", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "y", "Math.PI/8", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigRightHand", "rotation", "y", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "HELP": {
+      "description": "Right fist on left palm, lifting",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigLeftHandIndex1", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/8", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/3", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigLeftHandIndex1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigLeftArm", "rotation", "x", "0", "+"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/3", "+"],
+            ["mixamorigLeftForeArm", "rotation", "z", "0", "+"]
+          ]
+        }
+      ]
+    },
+    "NAME": {
+      "description": "Two fingers tapping on other hand",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigLeftHandIndex1", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandRing2", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandPinky2", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandThumb1", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/8", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigLeftHandIndex1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandRing2", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandPinky2", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigLeftArm", "rotation", "x", "0", "+"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/3", "+"],
+            ["mixamorigLeftForeArm", "rotation", "z", "0", "+"]
+          ]
+        }
+      ]
+    },
+    "FAMILY": {
+      "description": "F handshape forming a circle",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/3", "+"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "Math.PI/3", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "y", "Math.PI/4", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigLeftHandIndex1", "rotation", "z", "-Math.PI/3", "-"],
+            ["mixamorigLeftHandIndex2", "rotation", "z", "-Math.PI/3", "-"],
+            ["mixamorigLeftHandThumb1", "rotation", "y", "-Math.PI/4", "-"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "-Math.PI/8", "-"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "-Math.PI/8", "-"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "-Math.PI/8", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/6", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "y", "Math.PI/6", "+"],
+            ["mixamorigLeftArm", "rotation", "y", "-Math.PI/6", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "y", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigLeftHandIndex1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandIndex2", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandThumb1", "rotation", "y", "0", "+"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "y", "0", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigLeftArm", "rotation", "x", "0", "+"],
+            ["mixamorigLeftArm", "rotation", "y", "0", "+"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/3", "+"],
+            ["mixamorigLeftForeArm", "rotation", "z", "0", "+"]
+          ]
+        }
+      ]
+    },
+    "FRIEND": {
+      "description": "Hooked index fingers interlocking",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "Math.PI/3", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigLeftHandIndex1", "rotation", "z", "-Math.PI/4", "-"],
+            ["mixamorigLeftHandIndex2", "rotation", "z", "-Math.PI/3", "-"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandMiddle2", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandRing2", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandPinky2", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandThumb1", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightHand", "rotation", "y", "-Math.PI/4", "-"],
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/8", "-"],
+            ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigLeftHand", "rotation", "y", "Math.PI/4", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "x", "Math.PI/6", "+"],
+            ["mixamorigLeftHand", "rotation", "x", "-Math.PI/6", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigLeftHandIndex1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandIndex2", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandMiddle2", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandRing2", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandPinky2", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigRightHand", "rotation", "x", "0", "-"],
+            ["mixamorigRightHand", "rotation", "y", "0", "+"],
+            ["mixamorigLeftArm", "rotation", "x", "0", "+"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/3", "+"],
+            ["mixamorigLeftForeArm", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHand", "rotation", "x", "0", "+"],
+            ["mixamorigLeftHand", "rotation", "y", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "WORK": {
+      "description": "Fist striking wrist",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigLeftHandIndex1", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/8", "-"],
+            ["mixamorigLeftHand", "rotation", "x", "Math.PI/6", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigLeftHandIndex1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigLeftArm", "rotation", "x", "0", "+"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/3", "+"],
+            ["mixamorigLeftForeArm", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHand", "rotation", "x", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "SCHOOL": {
+      "description": "Clapping motion",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigLeftHandIndex1", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/8", "-"],
+            ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/6", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "y", "-Math.PI/12", "-"],
+            ["mixamorigLeftArm", "rotation", "y", "Math.PI/12", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "y", "0", "+"],
+            ["mixamorigLeftArm", "rotation", "y", "0", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigLeftHandIndex1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigLeftArm", "rotation", "x", "0", "+"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/3", "+"],
+            ["mixamorigLeftForeArm", "rotation", "z", "0", "+"]
+          ]
+        }
+      ]
+    },
+    "EAT": {
+      "description": "Fingers to mouth",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/3", "+"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "Math.PI/3", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/3", "+"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "Math.PI/3", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/3", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/3", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/3", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/3", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "y", "Math.PI/4", "+"],
+            ["mixamorigRightHandThumb2", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/2.5", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/3", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "y", "0", "-"],
+            ["mixamorigRightHandThumb2", "rotation", "z", "0", "-"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "DRINK": {
+      "description": "C-shape hand tilted to mouth",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "Math.PI/3", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "Math.PI/3", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/3", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/3", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "y", "Math.PI/3", "+"],
+            ["mixamorigRightHandThumb2", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/3", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/2.2", "-"],
+            ["mixamorigRightHand", "rotation", "x", "Math.PI/4", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "y", "0", "-"],
+            ["mixamorigRightHandThumb2", "rotation", "z", "0", "-"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigRightHand", "rotation", "x", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "GOOD": {
+      "description": "Flat hand from mouth moving forward",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightHand", "rotation", "y", "-Math.PI/6", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "+"],
+            ["mixamorigRightHand", "rotation", "x", "-Math.PI/8", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigRightHand", "rotation", "x", "0", "+"],
+            ["mixamorigRightHand", "rotation", "y", "0", "+"]
+          ]
+        }
+      ]
+    },
+    "ME": {
+      "description": "Index finger pointing to chest",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "y", "-Math.PI/4", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/3", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "y", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "WATER": {
+      "description": "W-handshape tapping chin",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "y", "Math.PI/3", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/2.5", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/3", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/2.5", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/3", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "MOTHER": {
+      "description": "Open hand with thumb tapping chin",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/3", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/2.5", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "FATHER": {
+      "description": "Open hand with thumb tapping forehead",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/1.8", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/2.2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/4", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/2", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "BROTHER": {
+      "description": "Index finger rubs side of nose",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/3", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "y", "Math.PI/8", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "SISTER": {
+      "description": "Pinky finger near corner of mouth",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/2.5", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "TEACHER": {
+      "description": "Pinched fingers moving forward from head",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/3", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "y", "Math.PI/4", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/3", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "FOOD": {
+      "description": "Fingertips together move to mouth",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/2.5", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/3", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "HAPPY": {
+      "description": "Hands brushing upward on chest",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigLeftArm",      "rotation", "x", "0",         "+"],
+            ["mixamorigRightArm",     "rotation", "x", "0",         "+"],
+            ["mixamorigLeftForeArm",  "rotation", "z", "0",         "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0",         "-"]
+          ]
+        }
+      ]
+    },
+    "SAD": {
+      "description": "Hands in front of face moving down",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/2", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/4", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "+"],
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/4", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm",     "rotation", "x", "0", "+"],
+            ["mixamorigLeftArm",      "rotation", "x", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigLeftForeArm",  "rotation", "z", "0", "+"]
+          ]
+        }
+      ]
+    },
+    "WHERE": {
+      "description": "Index finger shaking side to side",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "y", "-Math.PI/8", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "y", "Math.PI/8", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "UNDERSTAND": {
+      "description": "Index finger flicking up at forehead",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/3", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "PLEASE_NAMASTE": {
+      "description": "Palms together in front of chest",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigLeftForeArm", "rotation", "y", "-Math.PI/2.5", "+"],
+            ["mixamorigRightForeArm", "rotation", "y", "Math.PI/2.5", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigLeftArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigLeftForeArm", "rotation", "y", "0", "-"],
+            ["mixamorigRightForeArm", "rotation", "y", "0", "+"]
+          ]
+        }
+      ]
+    },
+    
+    "BAD": {
+      "description": "Flat hand from mouth flipping down",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHand", "rotation", "x", "Math.PI/3", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigRightHand", "rotation", "x", "0", "-"]
+          ]
+        }
+      ]
+    },
+
+    "I": {
+      "description": "Index finger pointing to own chest",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "y", "-Math.PI/4", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/3", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/8", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "y", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+
+    "LOVE": {
+      "description": "Both arms crossed over chest in a self-hug",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigLeftHandIndex1", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandIndex2", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandMiddle2", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandRing2", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandPinky2", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandThumb1", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/5", "+"],
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/5", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/8", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigLeftHandIndex1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandIndex2", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandMiddle2", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandRing2", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandPinky2", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigLeftArm", "rotation", "x", "0", "+"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/3", "+"]
+          ]
+        }
+      ]
+    },
+
+    "COME": {
+      "description": "Index finger curling to beckon toward body",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle3", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing3", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky3", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHand", "rotation", "y", "-Math.PI/6", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/3", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle3", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing3", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky3", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigRightHand", "rotation", "y", "0", "+"]
+          ]
+        }
+      ]
+    },
+
+    "GO": {
+      "description": "Index finger pointing forward away from body",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle3", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing3", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky3", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHand", "rotation", "x", "-Math.PI/6", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/8", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle3", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing3", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky3", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigRightHand", "rotation", "x", "0", "+"]
+          ]
+        }
+      ]
+    },
+
+    "WANT": {
+      "description": "Both claw hands pulling toward body",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigLeftHandIndex1", "rotation", "z", "-Math.PI/4", "-"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "-Math.PI/4", "-"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "-Math.PI/4", "-"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/8", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/8", "-"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/8", "-"],
+            ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/6", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/4", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigLeftHandIndex1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigLeftArm", "rotation", "x", "0", "+"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/3", "+"],
+            ["mixamorigLeftForeArm", "rotation", "z", "0", "+"]
+          ]
+        }
+      ]
+    },
+
+    "KNOW": {
+      "description": "Flat hand tapping side of forehead",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/3", "+"],
+            ["mixamorigRightHand", "rotation", "y", "-Math.PI/6", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/8", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigRightHand", "rotation", "y", "0", "+"]
+          ]
+        }
+      ]
+    },
+
+    "TODAY": {
+      "description": "Both forearms pointing down indicating present moment",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/8", "-"],
+            ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/6", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/4", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigLeftArm", "rotation", "x", "0", "+"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/3", "+"],
+            ["mixamorigLeftForeArm", "rotation", "z", "0", "+"]
+          ]
+        }
+      ]
+    },
+
+    "TOMORROW": {
+      "description": "Thumb at chin moves forward",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "y", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "y", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+
+    "YESTERDAY": {
+      "description": "Thumb at cheek moves backward over shoulder",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "y", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "y", "-Math.PI/6", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "y", "-Math.PI/8", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "y", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "y", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+
+    "MORNING": {
+      "description": "Right arm rising over left horizontal arm like the sun",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/8", "-"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigLeftArm", "rotation", "x", "0", "+"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/3", "+"],
+            ["mixamorigLeftForeArm", "rotation", "z", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+
+    "NIGHT": {
+      "description": "Bent right hand arcs over left horizontal arm",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/8", "-"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/8", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigLeftArm", "rotation", "x", "0", "+"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/3", "+"],
+            ["mixamorigLeftForeArm", "rotation", "z", "0", "+"],
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+
+    "STOP": {
+      "description": "Right open palm strikes down onto left horizontal palm",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigLeftHandIndex1", "rotation", "z", "-Math.PI/8", "-"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "-Math.PI/8", "-"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "-Math.PI/8", "-"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "-Math.PI/8", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightHand", "rotation", "y", "-Math.PI/4", "-"],
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/6", "-"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/8", "-"],
+            ["mixamorigLeftHand", "rotation", "x", "Math.PI/8", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigLeftHandIndex1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigRightHand", "rotation", "y", "0", "+"],
+            ["mixamorigLeftArm", "rotation", "x", "0", "+"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/3", "+"],
+            ["mixamorigLeftForeArm", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHand", "rotation", "x", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "NOW": {
+    "description": "Both palms facing up, dropping slightly in front of the body",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+          ["mixamorigLeftArm", "rotation", "x", "-Math.PI/6", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"],
+          ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/6", "-"],
+          ["mixamorigRightHand", "rotation", "x", "-Math.PI/2.5", "-"],
+          ["mixamorigLeftHand", "rotation", "x", "-Math.PI/2.5", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+          ["mixamorigLeftArm", "rotation", "x", "-Math.PI/4", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "0", "+"],
+          ["mixamorigLeftArm", "rotation", "x", "0", "+"]
+        ]
+      }
+    ]
+  },
+  "LATER": {
+    "description": "L-handshape moving forward from the side of the head",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/3", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHand", "rotation", "x", "Math.PI/4", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "0", "+"],
+          ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+        ]
+      }
+    ]
+  },
+  "WAIT": {
+    "description": "Both hands with fingers wiggling in front of body",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+          ["mixamorigLeftArm", "rotation", "x", "-Math.PI/6", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/8", "+"],
+          ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/8", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/12", "+"],
+          ["mixamorigLeftHandIndex1", "rotation", "z", "-Math.PI/12", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+          ["mixamorigLeftHandIndex1", "rotation", "z", "0", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "0", "+"],
+          ["mixamorigLeftArm", "rotation", "x", "0", "+"]
+        ]
+      }
+    ]
+  },
+  "FINISH": {
+    "description": "Both open hands flicking outward from palms-in to palms-out",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+          ["mixamorigLeftArm", "rotation", "x", "-Math.PI/4", "-"],
+          ["mixamorigRightHand", "rotation", "y", "-Math.PI/2", "-"],
+          ["mixamorigLeftHand", "rotation", "y", "Math.PI/2", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHand", "rotation", "y", "Math.PI/3", "+"],
+          ["mixamorigLeftHand", "rotation", "y", "-Math.PI/3", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "0", "+"],
+          ["mixamorigLeftArm", "rotation", "x", "0", "+"]
+        ]
+      }
+    ]
+  },
+  "LIKE": {
+    "description": "Pinching motion at chest pulling away",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/3", "+"],
+          ["mixamorigRightHandThumb1", "rotation", "y", "Math.PI/4", "+"],
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/10", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "0", "+"],
+          ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+        ]
+      }
+    ]
+  },
+  "DO": {
+    "description": "Both hands in C shapes moving in small circles",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+          ["mixamorigLeftArm", "rotation", "x", "-Math.PI/6", "-"],
+          ["mixamorigRightHand", "rotation", "x", "-Math.PI/4", "-"],
+          ["mixamorigLeftHand", "rotation", "x", "-Math.PI/4", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "y", "Math.PI/12", "+"],
+          ["mixamorigLeftArm", "rotation", "y", "-Math.PI/12", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "y", "0", "-"],
+          ["mixamorigLeftArm", "rotation", "y", "0", "+"]
+        ]
+      }
+    ]
+  },
+  "READ": {
+    "description": "Two fingers scanning the left palm",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigLeftArm", "rotation", "x", "-Math.PI/6", "-"],
+          ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/6", "-"],
+          ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "y", "Math.PI/8", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "y", "-Math.PI/8", "-"]
+        ]
+      }
+    ]
+  },
+  "MONEY": {
+    "description": "Rubbing thumb and fingers together",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/8", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHandThumb1", "rotation", "y", "Math.PI/6", "+"],
+          ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/6", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHandThumb1", "rotation", "y", "0", "-"],
+          ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"]
+        ]
+      }
+    ]
+  },
+  "PLAY": {
+    "description": "Both Y-handshapes shaking slightly",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigLeftHandIndex1", "rotation", "z", "-Math.PI/2", "-"],
+          ["mixamorigLeftHandMiddle1", "rotation", "z", "-Math.PI/2", "-"],
+          ["mixamorigLeftHandRing1", "rotation", "z", "-Math.PI/2", "-"],
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+          ["mixamorigLeftArm", "rotation", "x", "-Math.PI/6", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHand", "rotation", "y", "Math.PI/6", "+"],
+          ["mixamorigLeftHand", "rotation", "y", "-Math.PI/6", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHand", "rotation", "y", "-Math.PI/6", "-"],
+          ["mixamorigLeftHand", "rotation", "y", "Math.PI/6", "+"]
+        ]
+      }
+    ]
+  },
+  "ANGRY": {
+    "description": "Fingers clawed, moving from stomach up to chest",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/4", "+"],
+          ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/4", "+"],
+          ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/4", "+"],
+          ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/4", "+"],
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "0", "+"],
+          ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+        ]
+      }
+    ]
+  },
+  "SCARED": {
+    "description": "Both hands open, palms facing body, shaking near chest",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+          ["mixamorigLeftArm", "rotation", "x", "-Math.PI/4", "-"],
+          ["mixamorigRightHand", "rotation", "y", "-Math.PI/2", "-"],
+          ["mixamorigLeftHand", "rotation", "y", "Math.PI/2", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHand", "rotation", "z", "Math.PI/12", "+"],
+          ["mixamorigLeftHand", "rotation", "z", "-Math.PI/12", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHand", "rotation", "z", "-Math.PI/12", "-"],
+          ["mixamorigLeftHand", "rotation", "z", "Math.PI/12", "+"]
+        ]
+      }
+    ]
+  },
+  "HUNGRY": {
+    "description": "Right hand rubbing stomach in a circle",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/8", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "y", "Math.PI/8", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "y", "-Math.PI/8", "-"]
+        ]
+      }
+    ]
+  },
+  "THIRSTY": {
+    "description": "Index finger running down the throat",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/3", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "+"]
+        ]
+      }
+    ]
+  },
+  "BORED": {
+    "description": "Index finger twisting at the cheek",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/2.5", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHand", "rotation", "y", "Math.PI/6", "+"]
+        ]
+      }
+    ]
+  },
+  "EXCITED": {
+    "description": "Middle fingers brushing up chest alternately",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+          ["mixamorigLeftArm", "rotation", "x", "-Math.PI/6", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "+"],
+          ["mixamorigLeftArm", "rotation", "x", "-Math.PI/4", "-"]
+        ]
+      }
+    ]
+  },
+  "LEFT": {
+    "description": "Index finger pointing left",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightArm", "rotation", "y", "Math.PI/4", "+"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"]
+        ]
+      }
+    ]
+  },
+  "LIVE": {
+      "description": "L-handshapes on both hands moving upward from the waist to the chest",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "-Math.PI/2", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/8", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/8", "-"],
+            ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/6", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/3", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigLeftArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigLeftForeArm", "rotation", "z", "0", "+"]
+          ]
+        }
+      ]
+    },
+    "HE": {
+      "description": "Index finger pointing to the right (representing a third person)",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "y", "-Math.PI/4", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightArm", "rotation", "y", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "SHE": {
+      "description": "Index finger pointing to the right (representing a third person)",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "y", "-Math.PI/4", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightArm", "rotation", "y", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    },
+    "IT": {
+      "description": "Index finger pointing downward toward an object or location",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/3", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/12", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/12", "+"],
+            ["mixamorigRightHand", "rotation", "x", "Math.PI/2", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigRightHand", "rotation", "x", "0", "-"]
+          ]
+        }
+      ]
+    },
+  "RIGHT": {
+    "description": "Index finger pointing right",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightArm", "rotation", "y", "-Math.PI/4", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"]
+        ]
+      }
+    ]
+  },
+  "UP": {
+    "description": "Index finger pointing up",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/2", "+"]
+        ]
+      }
+    ]
+  },
+  "DOWN": {
+    "description": "Index finger pointing down",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/12", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/12", "+"],
+          ["mixamorigRightHand", "rotation", "x", "Math.PI/2", "+"]
+        ]
+      }
+    ]
+  },
+  "NEAR": {
+    "description": "Two flat hands moving close together",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+          ["mixamorigLeftArm", "rotation", "x", "-Math.PI/6", "-"],
+          ["mixamorigRightArm", "rotation", "y", "Math.PI/6", "+"],
+          ["mixamorigLeftArm", "rotation", "y", "-Math.PI/6", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "y", "Math.PI/12", "-"],
+          ["mixamorigLeftArm", "rotation", "y", "-Math.PI/12", "+"]
+        ]
+      }
+    ]
+  },
+  "FAR": {
+    "description": "Dominant hand moving far forward",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"]
+        ]
+      }
+    ]
+  },
+  "FRONT": {
+    "description": "Flat hand moving forward from chest",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/3", "-"]
+        ]
+      }
+    ]
+  },
+  "BACK": {
+    "description": "Thumb pointing back over the shoulder",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+          ["mixamorigRightArm", "rotation", "y", "-Math.PI/4", "-"]
+        ]
+      }
+    ]
+  },
+  "INSIDE": {
+    "description": "Right hand fingers move into a cup formed by left hand",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigLeftArm", "rotation", "x", "-Math.PI/6", "-"],
+          ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/6", "-"],
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/6", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"]
+        ]
+      }
+    ]
+  },
+    "WHAT": {
+    "description": "Dominant index finger shaking side to side",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHand", "rotation", "y", "-Math.PI/6", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHand", "rotation", "y", "Math.PI/6", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "0", "+"],
+          ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+        ]
+      }
+    ]
+  },
+  "WHEN": {
+    "description": "Right index finger circling left index finger",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigLeftArm", "rotation", "x", "-Math.PI/6", "-"],
+          ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/6", "-"],
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHand", "rotation", "x", "Math.PI/4", "+"],
+          ["mixamorigRightHand", "rotation", "y", "Math.PI/6", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigLeftArm", "rotation", "x", "0", "+"],
+          ["mixamorigRightArm", "rotation", "x", "0", "+"]
+        ]
+      }
+    ]
+  },
+  "WHO": {
+    "description": "Index finger circling near lips",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+          ["mixamorigRightForeArm", "rotation", "z", "Math.PI/3", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHand", "rotation", "z", "Math.PI/8", "+"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightHand", "rotation", "z", "-Math.PI/8", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "0", "+"],
+          ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+        ]
+      }
+    ]
+  },
+  "WHICH": {
+    "description": "Alternating thumbs-up moving up and down",
+    "keyframes": [
+      {
+        "transformations": [
+          ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/2", "+"],
+          ["mixamorigLeftHandIndex1", "rotation", "z", "-Math.PI/2", "-"],
+          ["mixamorigLeftHandMiddle1", "rotation", "z", "-Math.PI/2", "-"],
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/6", "-"],
+          ["mixamorigLeftArm", "rotation", "x", "-Math.PI/6", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+          ["mixamorigLeftArm", "rotation", "x", "-Math.PI/10", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "-Math.PI/10", "-"],
+          ["mixamorigLeftArm", "rotation", "x", "-Math.PI/4", "-"]
+        ]
+      },
+      {
+        "transformations": [
+          ["mixamorigRightArm", "rotation", "x", "0", "+"],
+          ["mixamorigLeftArm", "rotation", "x", "0", "+"]
+        ]
+      }
+    ]
+  },
+
+    "SLEEP": {
+      "description": "Palm resting at cheek, head tilts",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/8", "+"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/3", "+"],
+            ["mixamorigRightHand", "rotation", "y", "-Math.PI/4", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/8", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigRightHand", "rotation", "y", "0", "+"]
+          ]
+        }
+      ]
+    },
+
+    "TIRED": {
+      "description": "Both bent arms drop forward and down",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigLeftHandIndex1", "rotation", "z", "-Math.PI/4", "-"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "-Math.PI/4", "-"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "-Math.PI/4", "-"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/4", "+"],
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/6", "-"],
+            ["mixamorigLeftForeArm", "rotation", "z", "-Math.PI/4", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+            ["mixamorigLeftArm", "rotation", "x", "-Math.PI/2", "-"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandMiddle1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigLeftHandIndex1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandMiddle1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandRing1", "rotation", "z", "0", "+"],
+            ["mixamorigLeftHandPinky1", "rotation", "z", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"],
+            ["mixamorigLeftArm", "rotation", "x", "0", "+"],
+            ["mixamorigLeftArm", "rotation", "z", "-Math.PI/3", "+"],
+            ["mixamorigLeftForeArm", "rotation", "z", "0", "+"]
+          ]
+        }
+      ]
+    },
+
+    "SICK": {
+      "description": "Middle finger touches forehead then stomach",
+      "keyframes": [
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandRing2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "Math.PI/2", "+"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "-Math.PI/4", "-"],
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/2", "-"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/6", "+"],
+            ["mixamorigRightForeArm", "rotation", "z", "Math.PI/3", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightArm", "rotation", "x", "-Math.PI/4", "+"]
+          ]
+        },
+        {
+          "transformations": [
+            ["mixamorigRightHandIndex1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandIndex2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandRing2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky1", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandPinky2", "rotation", "z", "0", "-"],
+            ["mixamorigRightHandThumb1", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "x", "0", "+"],
+            ["mixamorigRightArm", "rotation", "z", "Math.PI/3", "-"],
+            ["mixamorigRightForeArm", "rotation", "z", "0", "-"]
+          ]
+        }
+      ]
+    }
+  }

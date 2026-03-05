@@ -1,0 +1,22 @@
+# SignVani Development Dependencies
+
+# Include production dependencies
+-r requirements.txt
+
+# Testing Framework
+pytest==7.4.3
+pytest-timeout==2.2.0        # Enforce latency constraints in tests
+pytest-cov==4.1.0            # Code coverage reporting
+
+# Performance Profiling
+memory-profiler==0.61.0      # Track memory usage
+py-spy==0.3.14               # CPU profiling (low overhead)
+
+# Code Quality
+black==23.12.1               # Code formatting
+flake8==7.0.0                # Linting
+mypy==1.8.0                  # Type checking
+
+# Development Tools
+ipython==8.18.1              # Enhanced interactive shell
+jupyter==1.0.0               # Notebook support for exploration
