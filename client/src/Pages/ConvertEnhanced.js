@@ -1,5 +1,5 @@
 import '../App.css';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Slider from 'react-input-slider';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -12,8 +12,7 @@ import ybotPic from '../Models/ybot/ybot.png';
 import { playString } from '../Animations/animationPlayer';
 import { convertToISLGloss } from '../Services/islGlossConverter';
 import apiService from '../Services/apiService';
-
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import AudioRecorder from '../Services/audioRecorder';
 
 import { useThreeScene } from '../Hooks/useThreeScene';
 import { useAnimationEngine } from '../Hooks/useAnimationEngine';
@@ -41,15 +40,31 @@ function ConvertEnhanced() {
   const [speed,        setSpeed]        = useState(1.0);
   const [pause,        setPause]        = useState(400);
   const [islMode,      setIslMode]      = useState(true);
-  const [isLoading,    setIsLoading]    = useState(false);
-  const [backendError, setBackendError] = useState(null);
+  const [isLoading,          setIsLoading]          = useState(false);
+  const [backendError,       setBackendError]       = useState(null);
+  const [micError,           setMicError]           = useState(null);
+  const [listening,          setListening]          = useState(false);
+  const [isProcessingAudio,  setIsProcessingAudio]  = useState(false);
+  const [transcript,         setTranscript]         = useState('');
   // glossResult: { glosses, glossString, originalText, tense, is_negated, question_type, source }
   const [glossResult,  setGlossResult]  = useState(null);
+
+  const audioRecorderRef  = useRef(null);
+  const recorderInitRef   = useRef(false);
 
   const textFromAudio = React.createRef();
   const textFromInput = React.createRef();
 
-  const { transcript, listening, resetTranscript } = useSpeechRecognition();
+  useEffect(() => {
+    audioRecorderRef.current = new AudioRecorder();
+    return () => {
+      if (audioRecorderRef.current) {
+        audioRecorderRef.current.cleanup();
+        audioRecorderRef.current = null;
+      }
+      recorderInitRef.current = false;
+    };
+  }, []);
 
   // Three.js scene and animation engine (same setup as Convert.js)
   const ref = useThreeScene(bot, 'canvas');
@@ -110,8 +125,83 @@ function ConvertEnhanced() {
     }
   };
 
-  const startListening = () => SpeechRecognition.startListening({ continuous: true });
-  const stopListening  = () => SpeechRecognition.stopListening();
+  const startListening = async () => {
+    const recorder = audioRecorderRef.current;
+    if (!recorder) return;
+    setMicError(null);
+    setTranscript('');
+    setGlossResult(null);
+    setBackendError(null);
+
+    if (!recorderInitRef.current) {
+      const ok = await recorder.initialize({
+        onTranscript: (result) => {
+          const spokenText = result.original_text || '';
+          setTranscript(spokenText);
+          setIsProcessingAudio(false);
+          setListening(false);
+
+          if (!spokenText.trim()) {
+            setMicError('No speech detected — speak clearly and try again.');
+            return;
+          }
+
+          // Clear animated text and any queued animations before starting fresh
+          setText('');
+          ref.animations = [];
+          ref.pending     = false;
+
+          // Backend already returned gloss — animate directly without a second API call
+          const glosses     = result.glosses || [];
+          const glossString = result.gloss   || '';
+          setGlossResult({
+            glosses,
+            glossString,
+            originalText:  result.original_text  || spokenText,
+            tense:         result.tense          ?? null,
+            is_negated:    result.is_negated     ?? false,
+            question_type: result.question_type  ?? null,
+            source: 'backend',
+          });
+          playString(ref, glosses.join(' '), true);
+        },
+        onError: (msg) => {
+          setMicError(msg);
+          setIsProcessingAudio(false);
+          setListening(false);
+        },
+        onProcessingStart: () => setIsProcessingAudio(true),
+        onProcessingEnd:   () => setIsProcessingAudio(false),
+      });
+
+      if (!ok) {
+        setMicError('Could not access microphone — check browser permissions.');
+        return;
+      }
+      recorderInitRef.current = true;
+    }
+
+    recorder.startRecording();
+    setListening(true);
+  };
+
+  const stopListening = () => {
+    if (audioRecorderRef.current && audioRecorderRef.current.isCurrentlyRecording()) {
+      audioRecorderRef.current.stopRecording();
+      // listening → false and isProcessingAudio → true happen via callbacks
+    }
+  };
+
+  const resetTranscript = () => {
+    setTranscript('');
+    setText('');
+    setMicError(null);
+    setGlossResult(null);
+    setBackendError(null);
+    // Stop any in-progress or queued animations
+    ref.animations = [];
+    ref.pending     = false;
+  };
 
   // ── Render ──────────────────────────────────────────────────────────────────
   return (
@@ -222,8 +312,19 @@ function ConvertEnhanced() {
 
           {/* Speech recognition */}
           <label className='label-style'>
-            Speech Recognition: {listening ? 'on' : 'off'}
+            {isProcessingAudio ? 'Processing audio…' : listening ? 'Recording: on' : 'Recording: off'}
           </label>
+          {isProcessingAudio && (
+            <div className='mb-2 p-2 text-center' style={{ color: '#7ec8e3', fontSize: '0.8rem' }}>
+              <span className='spinner-border spinner-border-sm me-1' role='status' aria-hidden='true' />
+              Transcribing with Vosk…
+            </div>
+          )}
+          {micError && (
+            <div className='mb-2 p-1' style={{ background: '#3a1010', border: '1px solid #aa3030', borderRadius: 4, fontSize: '0.72rem', color: '#ff9090' }}>
+              {micError}
+            </div>
+          )}
           <div className='space-between'>
             <button className='btn btn-primary btn-style w-33' onClick={startListening}>
               Mic On <i className='fa fa-microphone' />
