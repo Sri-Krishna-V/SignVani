@@ -194,7 +194,7 @@ logging_config = LoggingConfig()
 
 # Active ASR engine selection — set via environment variable before starting the server
 # Valid values: "vosk" (default, lowest latency) | "faster_whisper" (better accuracy)
-ASR_ENGINE: str = os.environ.get("ASR_ENGINE", "vosk").lower()
+ASR_ENGINE: str = os.environ.get("ASR_ENGINE", "faster_whisper").lower()
 
 
 # Utility function to print all configurations

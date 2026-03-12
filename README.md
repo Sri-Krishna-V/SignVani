@@ -86,8 +86,9 @@ graph TD
                 CircBuf["Circular Audio Buffer\n~160 KB bounded queue"]
             end
 
-            subgraph ASR["ASR Engine"]
-                VoskASR["Vosk ASR\nvosk-model-small-en-in-0.4\n~40 MB · Indian English"]
+            subgraph ASR["ASR Engine (selectable via ASR_ENGINE)"]
+                WhisperASR["faster-whisper · default\ntiny.en · int8 · CTranslate2\n~39 MB · warmup on startup"]
+                VoskASR["Vosk ASR · fallback\nvosk-model-small-en-in-0.4\n~40 MB · Indian English"]
             end
 
             subgraph NLP["NLP Pipeline"]
@@ -113,7 +114,9 @@ graph TD
     Services -->|"POST /api/text-to-handsign\nPOST /api/speech-to-handsign"| API
     API --> AudioPipeline
     API --> NLP
+    PyAudio --> VAD --> NoiseFilter --> CircBuf --> WhisperASR
     PyAudio --> VAD --> NoiseFilter --> CircBuf --> VoskASR
+    WhisperASR -->|"transcript"| TextProc
     VoskASR -->|"transcript"| TextProc
     TextProc --> GrammarT --> GlossMap
     GlossMap --> LRUCache --> SQLite
@@ -162,15 +165,16 @@ sequenceDiagram
     participant U as User
     participant C as React Client
     participant B as FastAPI Backend
-    participant V as Vosk ASR
+    participant A as ASR Engine
     participant N as NLP Pipeline
 
     U->>C: Clicks Record
     C->>C: MediaRecorder captures WebM audio
     C->>C: Web Audio API converts WebM → 16kHz PCM WAV
     C->>B: POST /api/speech-to-handsign (WAV · multipart)
-    B->>V: Feed 16kHz int16 PCM to Vosk engine
-    V-->>B: {text: "hello how are you", confidence: 0.94}
+    Note over B,A: Engine selected by ASR_ENGINE env var<br/>faster-whisper (default) or Vosk (fallback)
+    B->>A: Normalise WAV → 16kHz mono float32 → transcribe()
+    A-->>B: {text: "hello how are you", confidence: 0.94}
     B->>N: Same NLP pipeline as text-to-sign
     B-->>C: {original_text, gloss, animations[], total_duration}
     C-->>U: Avatar signs the transcribed phrase
@@ -254,7 +258,7 @@ Output Gloss: "I MARKET GO"
 | Feature | Mode | Description |
 |---------|------|-------------|
 | **Text to ISL** | Backend | Type English → NLP pipeline → 3D avatar signs ISL |
-| **Speech to ISL** | Backend | Record audio → Vosk ASR → NLP pipeline → avatar signs |
+| **Speech to ISL** | Backend | Record audio → faster-whisper / Vosk ASR → NLP pipeline → avatar signs |
 | **Learn ISL** | Built-in | Interactive ISL alphabet A–Z and 48 common word signs |
 | **Create Video** | Built-in | Compose and save ISL signing videos with unique IDs |
 | **Video Gallery** | Built-in | Browse and replay all saved ISL videos |
@@ -282,7 +286,8 @@ Output Gloss: "I MARKET GO"
 |----------|-----------|---------|
 | Framework | FastAPI + GZipMiddleware | 0.104.1 |
 | ASGI Server | Uvicorn (single worker) | 0.24.0 |
-| Speech Recognition | Vosk (`vosk-model-small-en-in-0.4`, Indian English, offline) | 0.3.45 |
+| Speech Recognition (default) | faster-whisper (`tiny.en`, int8, CTranslate2 — offline) | 1.2.1 |
+| Speech Recognition (fallback) | Vosk (`vosk-model-small-en-in-0.4`, Indian English, offline) | 0.3.45 |
 | NLP | NLTK (tokenise, POS tag, lemmatise, stopwords) | 3.9+ |
 | Audio Capture | PyAudio (PortAudio callback stream) | 0.2.14 |
 | Audio DSP | NumPy + SciPy (spectral subtraction, FFT-512) | 2.x / 1.17+ |
@@ -318,7 +323,7 @@ cd signvani
 ```bash
 cd nlp_backend
 pip3 install --extra-index-url https://www.piwheels.org/simple -r requirements.txt
-python3 scripts/setup_models.py      # Downloads Vosk model (~40 MB) + NLTK data (~24 MB)
+python3 scripts/setup_models.py      # Downloads Vosk model (~40 MB), faster-whisper tiny.en (~39 MB) + NLTK data (~24 MB)
 python3 -m src.database.seed_db      # Seeds ISL gloss database
 cd ..
 ```
@@ -347,6 +352,8 @@ WorkingDirectory=/home/pi/signvani/nlp_backend
 ExecStart=/usr/bin/python3 api_server.py
 Restart=on-failure
 Environment=SIGNVANI_ENV=production
+# ASR engine: faster_whisper (default, better accuracy) or vosk (lower latency)
+Environment=ASR_ENGINE=faster_whisper
 
 [Install]
 WantedBy=multi-user.target
@@ -373,26 +380,44 @@ Open `http://<raspberry-pi-ip>/sign-kit/home` in any browser on the same network
 
 ## Getting Started — Development
 
+### One-command start (recommended)
+
+```bash
+# Install deps once
+cd nlp_backend && pip install -r requirements.txt && python scripts/setup_models.py && python -m src.database.seed_db && cd ..
+cd client && npm install && cd ..
+
+# Launch both services
+./start.sh                        # faster-whisper (default)
+ASR_ENGINE=vosk ./start.sh        # switch to Vosk
+```
+
+The script waits for the backend to pass its `/api/health` check before starting the frontend, and a single **Ctrl+C** stops both cleanly.
+
+### Manual start
+
 ```bash
 # Terminal 1 — NLP Backend
 cd nlp_backend
 pip install -r requirements.txt
 python scripts/setup_models.py
 python -m src.database.seed_db
-SIGNVANI_ENV=development python api_server.py   # port 8000
+ASR_ENGINE=faster_whisper python api_server.py   # port 8000
 
 # Terminal 2 — React Client
 cd client
 npm install
-npm start                                        # port 3000
+npm start                                         # port 3000
 ```
 
 Open [http://localhost:3000/sign-kit/home](http://localhost:3000/sign-kit/home).
 
-**Windows shortcut:**
-```bat
-start-signvani.bat
-```
+### Choosing the ASR engine
+
+| `ASR_ENGINE` | Model | ~RAM | ~Latency (RPi4) | Best for |
+|---|---|---|---|---|
+| `faster_whisper` **(default)** | `tiny.en` int8 CTranslate2 | ~180 MB | 1–2 s | Accuracy, file uploads |
+| `vosk` | `vosk-model-small-en-in-0.4` | ~80 MB | 0.1–0.3 s | Lowest latency, live pipeline |
 
 ### Running Tests
 
@@ -418,7 +443,7 @@ Base URL: `http://localhost:8000`
 
 ### `GET /api/health`
 
-Returns component status for Vosk ASR, NLP engine, and database.
+Returns component status for the active ASR engine, NLP engine, and database.
 
 ```json
 {
@@ -474,9 +499,9 @@ Returns gloss string and raw SiGML XML.
 
 ### `POST /api/speech-to-handsign`
 
-Accepts a multipart WAV audio file. Transcribes with Vosk, then runs the same NLP pipeline as `text-to-handsign`.
+Accepts a multipart WAV audio file. Transcribes using the active ASR engine (selected by `ASR_ENGINE`), then runs the same NLP pipeline as `text-to-handsign`. Input WAV is automatically normalised to 16 kHz mono.
 
-**Request:** `multipart/form-data` — field `audio` (WAV, 16kHz mono)
+**Request:** `multipart/form-data` — field `audio` (WAV, any sample rate / channel count)
 
 ### `POST /api/speech-to-sign`
 
@@ -563,7 +588,8 @@ All backend configuration is centralised in [`nlp_backend/config/settings.py`](n
 
 ```python
 audio_config   = AudioConfig()    # Sample rate, FFT size, VAD thresholds
-vosk_config    = VoskConfig()     # Model path, alternatives, word confidence
+vosk_config    = VoskConfig()     # Vosk model path, alternatives, word confidence
+whisper_config = WhisperConfig()  # faster-whisper model size, compute type, VAD
 nlp_config     = NLPConfig()      # NLTK resources, lemmatisation, SOV transform
 database_config= DatabaseConfig() # DB path, pool size, LRU cache, PRAGMAs
 pipeline_config= PipelineConfig() # Queue sizes, thread timeouts, latency targets
@@ -572,13 +598,28 @@ avatar_config  = AvatarConfig()   # CWASA player host/port
 logging_config = LoggingConfig()  # Log level, rotation size, SD card safety
 ```
 
+The **active ASR engine** is selected at startup via the `ASR_ENGINE` environment variable (read once, immutable at runtime):
+
+```bash
+ASR_ENGINE=faster_whisper  # default — higher accuracy
+ASR_ENGINE=vosk            # fallback — lower latency
+```
+
 Key values tuned for RPi4:
 
 ```python
 AudioConfig:
-    SAMPLE_RATE      = 16000       # Hz — required by Vosk
+    SAMPLE_RATE      = 16000       # Hz
     FRAMES_PER_BUFFER= 1024        # ~64 ms per chunk
     FFT_SIZE         = 512         # Spectral subtraction (RPi4 optimal)
+
+WhisperConfig:
+    MODEL_SIZE       = 'tiny.en'   # ~39 MB, int8-quantised
+    DEVICE           = 'cpu'
+    COMPUTE_TYPE     = 'int8'      # CTranslate2 INT8 — fits RPi4 RAM
+    BEAM_SIZE        = 1           # Greedy decode, fastest on ARM
+    VAD_FILTER       = True        # Live pipeline; disabled for file uploads
+    SILENCE_TIMEOUT  = 0.5         # Seconds of silence → flush utterance
 
 DatabaseConfig:
     CONNECTION_POOL_SIZE = 2
@@ -631,6 +672,7 @@ SignVani/
 │       └── Models/                  # xbot.glb · ybot.glb (Mixamo rig)
 │
 └── nlp_backend/                     # Python FastAPI NLP backend
+    ├── start.sh                     # Unified startup script (backend + frontend)
     ├── api_server.py                # FastAPI entry point + uvicorn launcher
     ├── config/settings.py           # All configuration (frozen dataclasses)
     └── src/
@@ -640,9 +682,11 @@ SignVani/
         │   ├── vad.py               # Voice Activity Detector (RMS energy)
         │   └── noise_filter.py      # Spectral subtraction (FFT-512)
         ├── asr/
-        │   ├── vosk_engine.py       # Vosk singleton engine
-        │   ├── asr_worker.py        # Consumer thread — AudioChunk → TranscriptEvent
-        │   └── vosk_integration.py  # WAV conversion helpers
+        │   ├── vosk_engine.py       # Vosk singleton engine (fallback)
+        │   ├── vosk_integration.py  # Vosk WAV helpers + get_asr_engine() factory
+        │   ├── whisper_engine.py    # faster-whisper singleton (default)
+        │   ├── whisper_integration.py # WhisperASR — mirrors VoskASR public API
+        │   └── asr_worker.py        # ASRWorker (Vosk) + WhisperASRWorker (accumulate→flush)
         ├── nlp/
         │   ├── text_processor.py    # Tokenise · POS tag · lemmatise
         │   ├── grammar_transformer.py# SVO→SOV · tense · negation · question
