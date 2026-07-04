@@ -63,88 +63,151 @@ SignVani is purpose-built and tuned for the Raspberry Pi 4B. All design decision
 
 ## System Architecture
 
+SignVani's architecture is broken into five focused diagrams rather than one dense one — each covers a single concern end to end.
+
+### High-Level Overview
+
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'background': '#ffffff', 'primaryColor': '#E8F0FE', 'primaryTextColor': '#102A43', 'primaryBorderColor': '#1D4ED8', 'lineColor': '#4B5563', 'secondaryColor': '#E8FFF7', 'tertiaryColor': '#FFF6E5', 'clusterBkg': '#F8FAFC', 'clusterBorder': '#CBD5E1', 'fontFamily': 'Inter, Segoe UI, Arial' }}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 'background': '#ffffff', 'primaryColor': '#3B82F6', 'primaryTextColor': '#0F172A', 'primaryBorderColor': '#1E40AF', 'lineColor': '#334155', 'clusterBkg': '#F8FAFC', 'clusterBorder': '#CBD5E1', 'fontFamily': 'Inter, Segoe UI, Arial' }}}%%
 flowchart LR
-    User[User]
+    User(["User"])
+    Client["Browser Client<br/>React · Three.js · Port 3000"]
+    API["FastAPI Backend<br/>Port 8000"]
+    ASR["Speech Recognition<br/>faster-whisper / Vosk"]
+    NLP["NLP + Grammar Pipeline<br/>English → ISL gloss"]
+    Data["SQLite + FTS5<br/>Gloss → HamNoSys"]
+    Gen["Animation Generator<br/>Three.js keyframes"]
+    Avatar["3D Avatar<br/>renders ISL signs"]
 
-    subgraph Pi["Raspberry Pi 4B"]
-        direction LR
+    User -->|text or recorded speech| Client
+    Client -->|REST request| API
+    API --> ASR --> NLP
+    API --> NLP
+    NLP --> Data --> Gen --> API
+    API -->|JSON response| Client --> Avatar -->|ISL animation| User
 
-        subgraph Client["Browser Client · React · Port 3000"]
-            direction TB
-            Pages["Pages<br/>Convert · LearnSign · CreateVideo · Videos"]
-            Services["Service Layer<br/>apiService.js · audioRecorder.js · handsignService.js"]
-            Hooks["Custom Hooks<br/>useThreeScene · useAnimationEngine"]
-            Renderer["Three.js Renderer<br/>WebGL · mediump · 30 fps"]
-            Avatar["3D Avatar<br/>Mixamo rig · skeletal animation"]
-            Assets["Built-in Sign Assets<br/>wordsData.json · Alphabets A-Z"]
-        end
+    classDef client fill:#3B82F6,stroke:#1E40AF,color:#FFFFFF;
+    classDef asr fill:#F59E0B,stroke:#B45309,color:#111827;
+    classDef nlp fill:#8B5CF6,stroke:#6D28D9,color:#FFFFFF;
+    classDef data fill:#EC4899,stroke:#BE185D,color:#FFFFFF;
+    classDef render fill:#06B6D4,stroke:#0E7490,color:#FFFFFF;
+    classDef user fill:#FDE047,stroke:#CA8A04,color:#111827;
 
-        subgraph Backend["NLP Backend · FastAPI · Port 8000"]
-            direction TB
-            API["API Layer<br/>FastAPI · GZip · api_server.py"]
-
-            subgraph Audio["Audio Ingestion"]
-                direction LR
-                Capture["PyAudio Capture<br/>16 kHz · callback stream"]
-                VAD["Voice Activity Detection<br/>RMS thresholding"]
-                Filter["Noise Reduction<br/>FFT-512 spectral subtraction"]
-                Buffer["Circular Buffer<br/>bounded in-memory queue"]
-            end
-
-            subgraph ASR["Speech Recognition"]
-                direction LR
-                Whisper["faster-whisper<br/>tiny.en · int8 · default"]
-                Vosk["Vosk<br/>small-en-in-0.4 · fallback"]
-            end
-
-            subgraph NLP["Language Processing"]
-                direction LR
-                Text["Text Processor<br/>tokenise · POS tag · lemmatise"]
-                Grammar["Grammar Transformer<br/>SVO → SOV · tense · negation"]
-                Gloss["Gloss Mapper<br/>English lemma → ISL gloss"]
-            end
-
-            subgraph Data["Lookup and Generation"]
-                direction LR
-                Cache["LRU Cache<br/>200 entries"]
-                DB["SQLite + FTS5<br/>gloss mapping · HamNoSys data"]
-                Keyframes["Handsign Generator<br/>HamNoSys → Three.js keyframes"]
-                SiGML["SiGML Generator<br/>HamNoSys → SiGML XML"]
-            end
-        end
-    end
-
-    User -->|Text or speech input| Pages
-    Pages --> Services -->|REST requests| API
-    API --> Capture --> VAD --> Filter --> Buffer
-    Buffer --> Whisper
-    Buffer --> Vosk
-    Whisper -->|Transcript| Text
-    Vosk -->|Transcript| Text
-    API --> Text
-    Text --> Grammar --> Gloss --> Cache --> DB
-    DB -->|HamNoSys lookup| Keyframes
-    DB -->|HamNoSys lookup| SiGML
-    Keyframes -->|Animation payload| API
-    API -->|JSON response| Services --> Hooks
-    Assets --> Hooks --> Renderer --> Avatar -->|ISL animation| User
-
-    classDef edge fill:#F8FAFC,stroke:#94A3B8,color:#0F172A;
-    classDef client fill:#EAF2FF,stroke:#2563EB,color:#0F172A;
-    classDef audio fill:#E8FFF7,stroke:#0F766E,color:#0F172A;
-    classDef asr fill:#FFF6E5,stroke:#D97706,color:#0F172A;
-    classDef nlp fill:#F3E8FF,stroke:#7C3AED,color:#0F172A;
-    classDef data fill:#FCE7F3,stroke:#DB2777,color:#0F172A;
-
-    class User edge;
-    class Pages,Services,Hooks,Renderer,Avatar,Assets client;
-    class Capture,VAD,Filter,Buffer audio;
-    class Whisper,Vosk asr;
-    class API,Text,Grammar,Gloss nlp;
-    class Cache,DB,Keyframes,SiGML data;
+    class User user;
+    class Client,Avatar client;
+    class API,NLP nlp;
+    class ASR asr;
+    class Data data;
+    class Gen render;
 ```
+
+### ASR Engine Selection
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'background': '#ffffff', 'primaryColor': '#F59E0B', 'primaryTextColor': '#111827', 'primaryBorderColor': '#B45309', 'lineColor': '#334155', 'fontFamily': 'Inter, Segoe UI, Arial' }}}%%
+flowchart LR
+    Env["ASR_ENGINE env var<br/>default: faster_whisper"] --> Factory["get_asr_engine()<br/>src/asr/vosk_integration.py"]
+    Factory -->|faster_whisper| Whisper["WhisperASR<br/>tiny.en · int8 · greedy decode"]
+    Factory -->|vosk| Vosk["VoskASR<br/>small-en-in-0.4 · Indian English"]
+    Whisper --> Out["Transcript"]
+    Vosk --> Out
+
+    classDef infra fill:#EF4444,stroke:#B91C1C,color:#FFFFFF;
+    classDef asr fill:#F59E0B,stroke:#B45309,color:#111827;
+    classDef output fill:#10B981,stroke:#047857,color:#FFFFFF;
+
+    class Env,Factory infra;
+    class Whisper,Vosk asr;
+    class Out output;
+```
+
+Both endpoints that accept audio (`/api/speech-to-handsign`, `/api/speech-to-sign`) call this same factory — the engine choice is a single environment variable, not a code path fork.
+
+### Real-Time Audio Pipeline (Built, Not Wired In)
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'background': '#ffffff', 'primaryColor': '#10B981', 'primaryTextColor': '#0F172A', 'primaryBorderColor': '#047857', 'lineColor': '#334155', 'fontFamily': 'Inter, Segoe UI, Arial' }}}%%
+flowchart LR
+    Mic(["Microphone"]) --> Capture["AudioCaptureSystem<br/>PyAudio · 16 kHz callback"]
+    Capture --> VAD["VoiceActivityDetector<br/>RMS thresholding"]
+    VAD --> Filter["SpectralSubtractor<br/>FFT-512 noise reduction"]
+    Filter --> Buffer["CircularAudioBuffer<br/>bounded ring buffer"]
+    Buffer --> Worker["ASRWorker /<br/>WhisperASRWorker"]
+    Worker --> Orchestrator["PipelineOrchestrator"]
+    Orchestrator -.-> Note["⚠ Fully implemented and tested, but PipelineOrchestrator<br/>is commented out at startup in api_server.py, and<br/>/ws/live-speech is currently a stub that never calls ASR —<br/>this chain is not on any active request path today"]
+
+    classDef audio fill:#10B981,stroke:#047857,color:#FFFFFF;
+    classDef legacy fill:#94A3B8,stroke:#475569,color:#111827;
+    classDef user fill:#FDE047,stroke:#CA8A04,color:#111827;
+
+    class Mic user;
+    class Capture,VAD,Filter,Buffer,Worker,Orchestrator audio;
+    class Note legacy;
+```
+
+The two live endpoints instead take an already-recorded WAV upload straight to ASR — see [Data Flow](#data-flow) below.
+
+### Data, Lookup & Rendering Generation
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'background': '#ffffff', 'primaryColor': '#EC4899', 'primaryTextColor': '#0F172A', 'primaryBorderColor': '#BE185D', 'lineColor': '#334155', 'fontFamily': 'Inter, Segoe UI, Arial' }}}%%
+flowchart LR
+    Gloss["Gloss Sequence<br/>from NLP pipeline"] --> Cache["LRU Cache<br/>200 entries"]
+    Cache --> DB["SQLite + FTS5<br/>gloss_mapping · HamNoSys data"]
+    DB -->|HamNoSys lookup| Keyframes["HandsignGenerator<br/>HamNoSys → Three.js keyframes"]
+    DB -->|HamNoSys lookup| SiGML["SiGMLGenerator<br/>HamNoSys → SiGML XML"]
+    Keyframes -->|primary, active path| Browser["Browser Three.js Avatar"]
+    SiGML -.->|optional, not started by default| CWASA["CWASAPlayer<br/>TCP :8052 · legacy avatar player"]
+
+    classDef data fill:#EC4899,stroke:#BE185D,color:#FFFFFF;
+    classDef render fill:#06B6D4,stroke:#0E7490,color:#FFFFFF;
+    classDef legacy fill:#94A3B8,stroke:#475569,color:#111827;
+
+    class Gloss,Cache,DB,SiGML data;
+    class Keyframes,Browser render;
+    class CWASA legacy;
+```
+
+### Startup & Orchestration
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'background': '#ffffff', 'primaryColor': '#EF4444', 'primaryTextColor': '#0F172A', 'primaryBorderColor': '#B91C1C', 'lineColor': '#334155', 'fontFamily': 'Inter, Segoe UI, Arial' }}}%%
+flowchart TD
+    Start(["./start.sh<br/>repo root"]) --> Venv["Activate nlp_backend/.venv"]
+    Venv --> Backend["Launch FastAPI backend<br/>ASR_ENGINE=$ASR_ENGINE python api_server.py"]
+    Backend --> Poll["Poll /api/health<br/>up to 60s"]
+    Poll -->|healthy| Frontend["Launch React dev server<br/>REACT_APP_API_URL=http://localhost:8000 npm start"]
+    Frontend --> Banner["Print status banner<br/>ports 3000 / 8000 · active ASR engine"]
+    Banner --> Trap["trap cleanup EXIT INT TERM"]
+    Trap -->|Ctrl+C| Stop["Kill BACKEND_PID + FRONTEND_PID"]
+
+    classDef infra fill:#EF4444,stroke:#B91C1C,color:#FFFFFF;
+    classDef user fill:#FDE047,stroke:#CA8A04,color:#111827;
+
+    class Start user;
+    class Venv,Backend,Poll,Frontend,Banner,Trap,Stop infra;
+```
+
+### Legacy & Optional Components
+
+Not every dependency in this repo is part of the offline ISL pipeline:
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'background': '#ffffff', 'primaryColor': '#94A3B8', 'primaryTextColor': '#111827', 'primaryBorderColor': '#475569', 'lineColor': '#334155', 'fontFamily': 'Inter, Segoe UI, Arial' }}}%%
+flowchart LR
+    Pages["CreateVideo · Videos · Video pages"] -.->|requires network| Heroku["sign-kit-api.herokuapp.com<br/>legacy Node.js video API"]
+    SiGML["SiGMLGenerator output"] -.->|requires network| CWASA["CWASAPlayer<br/>TCP :8052"]
+
+    classDef client fill:#3B82F6,stroke:#1E40AF,color:#FFFFFF;
+    classDef data fill:#EC4899,stroke:#BE185D,color:#FFFFFF;
+    classDef legacy fill:#94A3B8,stroke:#475569,color:#111827;
+
+    class Pages client;
+    class SiGML data;
+    class Heroku,CWASA legacy;
+```
+
+`CreateVideo`/`Videos`/`Video` (`client/src/Config/config.js`) call a Heroku-hosted video API and are **not** offline — everything else in this README is.
 
 ---
 
@@ -153,7 +216,7 @@ flowchart LR
 ### Text → Sign (Backend Mode)
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'background': '#ffffff', 'primaryColor': '#EAF2FF', 'primaryBorderColor': '#2563EB', 'primaryTextColor': '#102A43', 'secondaryColor': '#E8FFF7', 'tertiaryColor': '#FFF6E5', 'lineColor': '#475569', 'signalColor': '#1D4ED8', 'signalTextColor': '#0F172A', 'actorBorder': '#2563EB', 'actorBkg': '#EAF2FF', 'actorTextColor': '#0F172A', 'activationBorderColor': '#2563EB', 'activationBkgColor': '#DBEAFE', 'noteBkgColor': '#F8FAFC', 'noteBorderColor': '#CBD5E1', 'fontFamily': 'Inter, Segoe UI, Arial' }}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 'background': '#ffffff', 'primaryColor': '#3B82F6', 'primaryBorderColor': '#1E40AF', 'primaryTextColor': '#0F172A', 'lineColor': '#334155', 'signalColor': '#1E40AF', 'signalTextColor': '#0F172A', 'actorBorder': '#1E40AF', 'actorBkg': '#3B82F6', 'actorTextColor': '#FFFFFF', 'activationBorderColor': '#1E40AF', 'activationBkgColor': '#93C5FD', 'noteBkgColor': '#FDE047', 'noteBorderColor': '#CA8A04', 'fontFamily': 'Inter, Segoe UI, Arial' }}}%%
 sequenceDiagram
     autonumber
     actor U as User
@@ -176,10 +239,10 @@ sequenceDiagram
     C-->>U: Render signed output on avatar
 ```
 
-### Speech → Sign (Real-time Pipeline)
+### Speech → Sign (Recorded Upload)
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'background': '#ffffff', 'primaryColor': '#E8FFF7', 'primaryBorderColor': '#0F766E', 'primaryTextColor': '#102A43', 'secondaryColor': '#EAF2FF', 'tertiaryColor': '#FFF6E5', 'lineColor': '#475569', 'signalColor': '#0F766E', 'signalTextColor': '#0F172A', 'actorBorder': '#0F766E', 'actorBkg': '#ECFDF5', 'actorTextColor': '#0F172A', 'activationBorderColor': '#0F766E', 'activationBkgColor': '#D1FAE5', 'noteBkgColor': '#F8FAFC', 'noteBorderColor': '#CBD5E1', 'fontFamily': 'Inter, Segoe UI, Arial' }}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 'background': '#ffffff', 'primaryColor': '#10B981', 'primaryBorderColor': '#047857', 'primaryTextColor': '#0F172A', 'lineColor': '#334155', 'signalColor': '#047857', 'signalTextColor': '#0F172A', 'actorBorder': '#047857', 'actorBkg': '#10B981', 'actorTextColor': '#FFFFFF', 'activationBorderColor': '#047857', 'activationBkgColor': '#6EE7B7', 'noteBkgColor': '#FDE047', 'noteBorderColor': '#CA8A04', 'fontFamily': 'Inter, Segoe UI, Arial' }}}%%
 sequenceDiagram
     autonumber
     actor U as User
@@ -188,23 +251,25 @@ sequenceDiagram
     participant A as Active ASR Engine
     participant N as NLP Pipeline
 
-    U->>C: Start recording
-    C->>C: Capture WebM audio
-    C->>C: Convert to 16 kHz mono WAV
-    C->>B: POST /api/speech-to-handsign
+    U->>C: Click record, then stop
+    C->>C: Capture WebM audio (MediaRecorder)
+    C->>C: Convert to 16 kHz mono WAV client-side
+    C->>B: POST /api/speech-to-handsign (WAV upload)
     Note over B,A: ASR_ENGINE selects faster-whisper or Vosk
-    B->>A: Normalise and transcribe audio
+    B->>A: Normalise and transcribe uploaded WAV
     A-->>B: Transcript with confidence
     B->>N: Run ISL transformation pipeline
     N-->>B: Gloss sequence + animation payload
     B-->>C: original_text + gloss + animations
-    C-->>U: Play signed response in real time
+    C-->>U: Play signed response
 ```
+
+This is a request/response upload, not a live streaming mic — the `/ws/live-speech` WebSocket exists for that but currently only echoes a placeholder (see [Real-Time Audio Pipeline](#real-time-audio-pipeline-built-not-wired-in)).
 
 ### Built-in Animations (No Backend)
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'background': '#ffffff', 'primaryColor': '#FFF6E5', 'primaryBorderColor': '#D97706', 'primaryTextColor': '#102A43', 'secondaryColor': '#EAF2FF', 'tertiaryColor': '#E8FFF7', 'lineColor': '#475569', 'signalColor': '#B45309', 'signalTextColor': '#0F172A', 'actorBorder': '#D97706', 'actorBkg': '#FFF7ED', 'actorTextColor': '#0F172A', 'activationBorderColor': '#D97706', 'activationBkgColor': '#FED7AA', 'noteBkgColor': '#F8FAFC', 'noteBorderColor': '#CBD5E1', 'fontFamily': 'Inter, Segoe UI, Arial' }}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 'background': '#ffffff', 'primaryColor': '#F59E0B', 'primaryBorderColor': '#B45309', 'primaryTextColor': '#111827', 'lineColor': '#334155', 'signalColor': '#B45309', 'signalTextColor': '#0F172A', 'actorBorder': '#B45309', 'actorBkg': '#F59E0B', 'actorTextColor': '#111827', 'activationBorderColor': '#B45309', 'activationBkgColor': '#FCD34D', 'noteBkgColor': '#FDE047', 'noteBorderColor': '#CA8A04', 'fontFamily': 'Inter, Segoe UI, Arial' }}}%%
 sequenceDiagram
     autonumber
     actor U as User
@@ -236,7 +301,7 @@ sequenceDiagram
 SignVani implements a 7-stage pipeline to transform raw English text into ISL-compatible gloss sequences. ISL follows **Subject-Object-Verb (SOV)** word order, the inverse of English's SVO.
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'background': '#ffffff', 'primaryColor': '#F8FAFC', 'primaryBorderColor': '#CBD5E1', 'primaryTextColor': '#102A43', 'lineColor': '#64748B', 'fontFamily': 'Inter, Segoe UI, Arial' }}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 'background': '#ffffff', 'primaryColor': '#3B82F6', 'primaryBorderColor': '#1E40AF', 'primaryTextColor': '#0F172A', 'lineColor': '#334155', 'fontFamily': 'Inter, Segoe UI, Arial' }}}%%
 flowchart TD
     Input["Input Sentence<br/>I am going to the market"] --> C1["1. Contraction Expansion<br/>don't → do not"]
     C1 --> C2["2. Tokenisation<br/>I · am · going · to · the · market"]
@@ -251,11 +316,11 @@ flowchart TD
     Meta2["Negation Detection"] -. parallel annotations .-> C6
     Meta3["Question Classification"] -. parallel annotations .-> C6
 
-    classDef input fill:#EAF2FF,stroke:#2563EB,color:#0F172A;
-    classDef lexical fill:#E8FFF7,stroke:#0F766E,color:#0F172A;
-    classDef grammar fill:#F3E8FF,stroke:#7C3AED,color:#0F172A;
-    classDef output fill:#FFF6E5,stroke:#D97706,color:#0F172A;
-    classDef meta fill:#FCE7F3,stroke:#DB2777,color:#0F172A;
+    classDef input fill:#FDE047,stroke:#CA8A04,color:#111827;
+    classDef lexical fill:#10B981,stroke:#047857,color:#FFFFFF;
+    classDef grammar fill:#8B5CF6,stroke:#6D28D9,color:#FFFFFF;
+    classDef output fill:#EC4899,stroke:#BE185D,color:#FFFFFF;
+    classDef meta fill:#06B6D4,stroke:#0E7490,color:#FFFFFF;
 
     class Input input;
     class C1,C2,C3,C4,C5 lexical;
@@ -281,7 +346,7 @@ flowchart TD
 | **Learn ISL** | Built-in | Interactive ISL alphabet A–Z and 48 common word signs |
 | **Create Video** | Built-in | Compose and save ISL signing videos with unique IDs |
 | **Video Gallery** | Built-in | Browse and replay all saved ISL videos |
-| **Live Streaming** | WebSocket | Real-time audio streaming via `/ws/live-speech` |
+| **Live Streaming** | WebSocket | `/ws/live-speech` endpoint exists but is currently a stub (not yet wired to ASR) |
 
 ---
 
@@ -532,7 +597,7 @@ Same as above but returns SiGML XML instead of keyframes.
 
 ### `WS /ws/live-speech`
 
-WebSocket endpoint for real-time audio streaming and live transcript/sign output.
+Accepts a WebSocket connection and receives audio bytes, but currently only echoes a placeholder `"Processing audio chunk..."` message — it does not yet call an ASR engine. The real-time audio pipeline it's meant to front (`PipelineOrchestrator`) is implemented but not wired in; see [Real-Time Audio Pipeline](#real-time-audio-pipeline-built-not-wired-in).
 
 ---
 
@@ -668,6 +733,7 @@ REACT_APP_API_URL=http://raspberrypi.local:8000
 
 ```
 SignVani/
+├── start.sh                          # Unified startup script (launches backend + frontend)
 ├── client/                          # React 17 frontend
 │   └── src/
 │       ├── Animations/
@@ -695,7 +761,6 @@ SignVani/
 │       └── Models/                  # xbot.glb · ybot.glb (Mixamo rig)
 │
 └── nlp_backend/                     # Python FastAPI NLP backend
-    ├── start.sh                     # Unified startup script (backend + frontend)
     ├── api_server.py                # FastAPI entry point + uvicorn launcher
     ├── config/settings.py           # All configuration (frozen dataclasses)
     └── src/

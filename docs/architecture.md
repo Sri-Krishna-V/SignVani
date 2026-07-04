@@ -22,10 +22,11 @@ SignVani consists of two independent processes that communicate over HTTP:
                        ▼
 ┌─────────────────────────────────────────────────────────┐
 │               NLP Backend (FastAPI, port 8000)          │
-│  ┌────────────┐  ┌───────────┐  ┌────────────────────┐  │
-│  │  Vosk ASR  │  │   NLTK    │  │  SQLite + FTS5 DB  │  │
-│  │ (offline)  │  │ NLP pipe  │  │  (gloss/HamNoSys)  │  │
-│  └────────────┘  └───────────┘  └────────────────────┘  │
+│  ┌──────────────────────────┐  ┌───────────┐  ┌───────┐  │
+│  │ ASR: faster-whisper       │  │   NLTK    │  │SQLite │  │
+│  │ (default) or Vosk         │  │ NLP pipe  │  │+ FTS5 │  │
+│  │ (ASR_ENGINE env, offline) │  │           │  │  DB   │  │
+│  └──────────────────────────┘  └───────────┘  └───────┘  │
 │                    ↓                                     │
 │  ┌────────────────────────────────────────────────────┐  │
 │  │           SiGML / Animation Generator              │  │
@@ -33,11 +34,14 @@ SignVani consists of two independent processes that communicate over HTTP:
 └─────────────────────────────────────────────────────────┘
 ```
 
+Uploaded-WAV endpoints (`/api/speech-to-handsign`, `/api/speech-to-sign`) go straight from the HTTP request to the ASR engine above — they do not use the live-capture chain (audio capture → VAD → noise filter → buffer) documented later in this file, which is implemented but not currently wired into any active endpoint.
+
 ---
 
 ## System Architecture Diagram
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'background': '#ffffff', 'primaryColor': '#3B82F6', 'primaryTextColor': '#0F172A', 'primaryBorderColor': '#1E40AF', 'lineColor': '#334155', 'clusterBkg': '#F8FAFC', 'clusterBorder': '#CBD5E1', 'fontFamily': 'Inter, Segoe UI, Arial' }}}%%
 graph TD
     User["User (Browser)"]
 
@@ -53,22 +57,22 @@ graph TD
     subgraph backend [NLP Backend - port 8000]
         FastAPI["FastAPI Server\n(api_server.py)"]
         GlossMapper["GlossMapper\n(tokenize → POS → lemma\n→ SVO-SOV → gloss)"]
-        VoskASR["Vosk ASR\n(vosk-model-small-en-in-0.4)"]
+        ASREngine["Active ASR Engine\n(faster-whisper default,\nVosk alternative — ASR_ENGINE env)"]
         SQLiteDB["SQLite Database\n(gloss_mapping, FTS5)"]
         SiGMLGen["SiGML Generator\n(HamNoSys → SiGML XML)"]
         HandsignGen["Handsign Generator\n(HamNoSys → keyframes)"]
     end
 
     User -->|"text input"| Pages
-    User -->|"microphone"| Services
+    User -->|"microphone (client-side record + WAV convert)"| Services
     Pages --> Services
     Services -->|"POST /api/text-to-handsign"| FastAPI
-    Services -->|"POST /api/speech-to-handsign"| FastAPI
+    Services -->|"POST /api/speech-to-handsign (WAV upload)"| FastAPI
     Services -->|"POST /api/text-to-sign"| FastAPI
-    Services -->|"POST /api/speech-to-sign"| FastAPI
+    Services -->|"POST /api/speech-to-sign (WAV upload)"| FastAPI
     FastAPI --> GlossMapper
-    FastAPI --> VoskASR
-    VoskASR -->|"transcript"| GlossMapper
+    FastAPI --> ASREngine
+    ASREngine -->|"transcript"| GlossMapper
     GlossMapper --> SQLiteDB
     SQLiteDB -->|"HamNoSys codes"| SiGMLGen
     SQLiteDB -->|"HamNoSys codes"| HandsignGen
@@ -80,7 +84,23 @@ graph TD
     Hooks --> ThreeJS
     ThreeJS --> Avatar
     Avatar -->|"rendered sign"| User
+
+    classDef client fill:#3B82F6,stroke:#1E40AF,color:#FFFFFF;
+    classDef asr fill:#F59E0B,stroke:#B45309,color:#111827;
+    classDef nlp fill:#8B5CF6,stroke:#6D28D9,color:#FFFFFF;
+    classDef data fill:#EC4899,stroke:#BE185D,color:#FFFFFF;
+    classDef render fill:#06B6D4,stroke:#0E7490,color:#FFFFFF;
+    classDef user fill:#FDE047,stroke:#CA8A04,color:#111827;
+
+    class User user;
+    class Pages,Services,AnimData client;
+    class Hooks,ThreeJS,Avatar render;
+    class FastAPI,GlossMapper nlp;
+    class ASREngine asr;
+    class SQLiteDB,SiGMLGen,HandsignGen data;
 ```
+
+Note: the Whisper/Vosk choice happens inside `ASREngine` via `get_asr_engine()` — there is no separate code fork per engine beyond that factory call. The two file-upload endpoints shown above never touch the live audio-capture chain (see [System Data Flow](../nlp_backend/docs/ARCHITECTURE.md)) — that chain exists but is not wired into any running endpoint today.
 
 ---
 
@@ -115,14 +135,14 @@ sequenceDiagram
     participant U as User
     participant C as React Client
     participant B as NLP Backend
-    participant V as Vosk ASR
+    participant A as Active ASR Engine (faster-whisper default, Vosk alternative)
 
     U->>C: Clicks "Record"
     C->>C: audioRecorder captures MediaRecorder WebM
     C->>C: Convert WebM → WAV (Web Audio API)
     C->>B: POST /api/speech-to-handsign (WAV file)
-    B->>V: Transcribe WAV audio
-    V-->>B: Transcript text
+    B->>A: Transcribe WAV audio via get_asr_engine()
+    A-->>B: Transcript text
     B->>B: NLP pipeline (same as text-to-sign)
     B-->>C: JSON {original_text, gloss, animations[]}
     C-->>U: Avatar plays ISL signs + gloss displayed
@@ -314,10 +334,10 @@ Both processes run on the same Raspberry Pi 4 device:
 RPi4 (LAN/WiFi)
 ├── port 3000 — React dev server (or static build served by nginx)
 ├── port 8000 — FastAPI backend (uvicorn)
-└── port 8052 — CWASA SiGML Avatar Player (optional, TCP socket)
+└── port 8052 — CWASA SiGML Avatar Player (optional, TCP socket — not started by default)
 ```
 
-The `start-signvani.bat` script at the project root launches both services together.
+`start.sh` (bash, project root) launches both services together: it activates `nlp_backend/.venv`, starts the FastAPI backend with the chosen `ASR_ENGINE`, polls `/api/health` for up to 60s, then starts the React dev server, and installs a `trap cleanup EXIT INT TERM` so a single Ctrl+C stops both processes.
 
 ### Legacy Cloud Deployment
 
